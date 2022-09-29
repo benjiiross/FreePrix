@@ -1,8 +1,12 @@
 <script setup>
 import HelloWorld from "./components/HelloWorld.vue";
 import TheWelcome from "./components/TheWelcome.vue";
+<<<<<<< HEAD
 import AboutUsVue from "./components/AboutUs.vue";
 import AboutUs from "./components/AboutUs.vue";
+=======
+import NavigationBar from "./components/NavigationBar.vue";
+>>>>>>> 79da7c13acebd390f4c5c881f2aa6d8a00c2d5ee
 </script>
 
 <template>
@@ -21,6 +25,7 @@ import AboutUs from "./components/AboutUs.vue";
   </header>
 
   <main>
+    <NavigationBar />
     <TheWelcome />
     <AboutUs/>
   </main>
