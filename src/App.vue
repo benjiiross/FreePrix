@@ -1,6 +1,7 @@
 <script setup>
 import HelloWorld from "./components/HelloWorld.vue";
 import TheWelcome from "./components/TheWelcome.vue";
+import NavigationBar from "./components/NavigationBar.vue";
 </script>
 
 <template>
@@ -19,6 +20,7 @@ import TheWelcome from "./components/TheWelcome.vue";
   </header>
 
   <main>
+    <NavigationBar />
     <TheWelcome />
   </main>
 </template>
