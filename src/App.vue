@@ -6,7 +6,7 @@ import NavigationBar from "./components/NavigationBar.vue";
 </script>
 
 <template>
-  <header>
+  <!-- <header>
     <img
       alt="Vue logo"
       class="logo"
@@ -18,12 +18,12 @@ import NavigationBar from "./components/NavigationBar.vue";
     <div class="wrapper">
       <HelloWorld msg="You did it!" />
     </div>
-  </header>
+  </header> -->
 
   <main>
     <NavigationBar />
-    <TheWelcome />
-    <AboutUs />
+    <!-- <TheWelcome /> -->
+    <!-- <AboutUs /> -->
   </main>
 </template>
 
