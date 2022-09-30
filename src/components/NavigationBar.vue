@@ -42,9 +42,18 @@
             aria-disabled="true"
             >Disabled</a
           >
+          
+
         </div>
       </div>
     </div>
+    <img
+            src="../assets/img/cartlogo.png"
+            alt="Bootstrap"
+            width="40"
+            height="30"
+            class="rounded mx-auto d-block float-right "
+          />
   </nav>
 </template>
 
