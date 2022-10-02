@@ -1,28 +1,22 @@
 <template>
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-    <ol class="carousel-indicators">
-      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-    </ol>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img class="d-block w-100" src="../assets/img/t-shirt-simple-white.png" alt="First slide">
-      </div>
-      <div class="carousel-item">
-        <img class="d-block w-100" src="../assets/img/t-shirt-simple-noir.jpg" alt="Second slide">
-      </div>
-        
-    </div>
-    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon bg-dark" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-      <span class="carousel-control-next-icon bg-dark" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
-</template>
 
+    <h1>Current Trends</h1>
+
+<div id="carouselExampleControls" class="carousel slide w-25"  data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="../assets/img/t-shirt-simple-white.png" weight = "400" height ="400" class="d-block" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="../assets/img/t-shirt-simple-noir.png" weight = "400" height ="400"  class="d-block" alt="...">
+    </div>
     
+  </div>
+
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+    <span class="carousel-control-next-icon bg-secondary" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+
+  </button>
+</div>
+</template>
