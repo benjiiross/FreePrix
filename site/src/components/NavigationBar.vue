@@ -1,5 +1,6 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
         <img
@@ -42,19 +43,10 @@
             aria-disabled="true"
             >Disabled</a
           >
-          
-
         </div>
       </div>
     </div>
-    <img
-            src="../assets/img/cartlogo.png"
-            alt="Bootstrap"
-            width="40"
-            height="30"
-            class="rounded mx-auto d-block float-right "
-          />
+    <i class="bi bi-basket3" style="font-size: 2rem; color: white"></i>
+    <i class="bi bi-bag-heart²" style="font-size: 2rem; color: white"></i>
   </nav>
 </template>
-
-<style scoped></style>

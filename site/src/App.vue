@@ -6,9 +6,7 @@ import CurrentTrends from "./components/CurrentTrends.vue";
 
 <template>
   <main>
-    <NavigationBar />
-    <CurrentTrends />
-    <AboutUs />
+    <NavigationBar/>
   </main>
 </template>
 

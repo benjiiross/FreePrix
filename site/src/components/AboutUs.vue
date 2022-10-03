@@ -25,39 +25,28 @@
           <div class="mt-4">
             <!-- Facebook -->
             <a type="button" class="btn btn-floating btn-light btn-lg bg-dark"
-              ><img
-                src="../assets/img/instagramlogo.png"
-                alt="Bootstrap"
-                width="50"
-                height="50"
-                class="img-rounded" /><i class="fab fa-instagram"></i
+              ><i
+                class="bi bi-instagram"
+                style="font-size: 2rem; color: white"
+              ></i
             ></a>
             <!-- Dribbble -->
             <a type="button" class="btn btn-floating btn-light btn-lg bg-dark"
-              ><img
-                src="../assets/img/twitterlogo.png"
-                alt="Bootstrap"
-                width="50"
-                height="50"
-                class="img-rounded" /><i class="fab fa-twitter"></i
+              ><i
+                class="bi bi-twitter"
+                style="font-size: 2rem; color: white"
+              ></i
             ></a>
             <!-- Twitter -->
             <a type="button" class="btn btn-floating btn-light btn-lg bg-dark"
-              ><img
-                src="../assets/img/snapchatlogo.png"
-                alt="Bootstrap"
-                width="50"
-                height="50"
-                class="img-rounded" /><i class="fab fa-snapchat"></i
+              ><i
+                class="bi bi-snapchat"
+                style="font-size: 2rem; color: white"
+              ></i
             ></a>
             <!-- Google + -->
             <a type="button" class="btn btn-floating btn-light btn-lg bg-dark"
-              ><img
-                src="../assets/img/tiktoklogo.png"
-                alt="Bootstrap"
-                width="50"
-                height="50"
-                class="img-rounded" /><i class="fab fa-tiktok"></i
+              ><i class="bi bi-tiktok" style="font-size: 2rem; color: white"></i
             ></a>
             <!-- Linkedin -->
           </div>
