@@ -2,7 +2,7 @@
   <div class="bg-white p-5 rounded-5" >
     <div><h2>New Arrival</h2></div>
     
-    <div class ="d-flex flex-row" style="overflow-x: scroll; width: 1920px">
+    <div class ="d-flex flex-row" style="overflow-x: scroll; width: 1820px">
       <NewArrivalCard 
       v-for="item in menu"
       :product="item.product"
@@ -10,6 +10,7 @@
       :price="item.price"
       :image="item.image"
       :description ="item.description"
+      :exclusivity = "item.exclusivity"
 
     />
     </div>
@@ -47,9 +48,13 @@
 
 <script>
 
-import img0 from "../assets/img/t-shirt-simple-white.png";
-import img1 from "../assets/img/t-shirt-simple-noir.png";
-import img2 from "../assets/img/P&BSWEAT1.jpg";
+import img0 from "../assets/img/TSBEIGEPARISFR.png"
+import img1 from "../assets/img/TSOVERSIZEPARISB.png"
+import img2 from "../assets/img/TSOVERSIZEKAKI.png"
+import img3 from "../assets/img/TSOVERSIZENOIRROSE.png"
+import img4 from "../assets/img/TSOVERSIZEGREY.png"
+import img5 from "../assets/img/TSOVERSIZEGRPMZN.png"
+
 import NewArrivalCard from "./NewArrivalCard.vue";
 
 
@@ -72,49 +77,51 @@ export default {
         {
           id: 0,
           image: img0,
-          product: "White Shirt",
-          price: " 5 $",
-          description :"j'écris actuellement une description afin de pouvoir regarder si cela marche bien"
+          product: "TS Regular Beige",
+          price: " 10 $",
+          description :" For men : Regular beige t shirt of the brand : Paris.fr"
           
         },
         {
           id: 1,
           image: img1,
-          product: "Black Shirt",
-          price: " 5 $",
-          description :""
+          product: "TS Oversize White",
+          price: " 10 $",
+          description :" For men : Oversize white t shirt of the brand : Paris.fr"
           
         },
         {
           id: 2,
           image: img2,
-          product: "Purple Hoodie",
+          product: "TS Oversize Kaki",
           price: " 15 $",
-          description :""
+          description :"For men : Oversize kaki t shirt of the brand : ROSEClothing",
+          exclusivity : "Member Exclusivity"
           
         },
         {
           id: 3,
-          image: img0,
-          product: "White Shirt",
-          price: " 5 $",
-          description :"j'écris actuellement une description afin de pouvoir regarder si cela marche bien"
+          image: img3,
+          product: "TS Oversize Black",
+          price: " 12$",
+          description :"For men : Oversize black t shirt of the brand : ROSEClothing"
           
         },
         {
           id: 4,
-          image: img1,
-          product: "Black Shirt",
-          price: " 5 $",
-          description :""
+          image: img4,
+          product: "TS Oversize Grey",
+          price: " 17 $",
+          description :"For men : Oversize grey t shirt of the brand : ASOS"
           
         },
         {
           id: 5,
-          image: img2,
-          product: "Purple Hoodie",
-          price: " 15 $",
-          description :""
+          image: img5,
+          product: "TS Oversize Black",
+          price: " 22  $",
+          description :"For men : Oversize black t shirt of the brand : PalmAngeles",
+          exclusivity : "Member Exclusivity"
           
         },
         

@@ -9,7 +9,7 @@
         :src="image"
         class="rounded-5 shadow shadow-intensity-xl"
         alt="Responsive image"
-        style =" width: 500px; height: 500px;"
+        style =" width: 500px; height: 600px;"
       />
     </div>
     <div class="d-flex flex-row">
@@ -35,6 +35,7 @@
       
       
     </div>
+    <h6 class="mr-auto p-2" style ="color : red">{{ exclusivity }}</h6>
   </div>
 </template>
 
@@ -46,6 +47,7 @@ export default {
     image: String,
     bgColor: String,
     description :String,
+    exclusivity :String,
   },
 };
 </script>
