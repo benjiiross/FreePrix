@@ -1,13 +1,14 @@
 <script setup>
 import AboutUs from "./components/AboutUs.vue";
 import NavigationBar from "./components/NavigationBar.vue";
-import CurrentTrends from "./components/CurrentTrends.vue";
+import NewArrivalCategory from "./components/NewArrivalCategory.vue";
+
 </script>
 
 <template>
   <main>
     <NavigationBar/>
-    <CurrentTrends/>
+    <NewArrivalCategory/>
     <AboutUs/>
   </main>
 </template>
