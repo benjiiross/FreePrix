@@ -3,6 +3,7 @@ import AboutUs from "./components/AboutUs.vue";
 import NavigationBar from "./components/NavigationBar.vue";
 import NewArrivalCategory from "./components/NewArrivalCategory.vue";
 import PutFoward from "./components/PutFoward.vue";
+import ShoeArrivalCategory from "./components/ShoeArrivalCategory.vue";
 
 </script>
 
@@ -11,6 +12,7 @@ import PutFoward from "./components/PutFoward.vue";
     <NavigationBar/>
     <PutFoward/>
     <NewArrivalCategory/>
+    <ShoeArrivalCategory/>
     <AboutUs/>
   </main>
 </template>

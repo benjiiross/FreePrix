@@ -2,8 +2,10 @@
   <div class="bg-white p-5 rounded-5" >
     <div><h2>New Arrival</h2></div>
     
-    <div class ="d-flex flex-row" style="overflow-x: scroll; width: auto">
-      <NewArrivalCard 
+    
+    
+    <div style="overflow-y: scroll; width: 25%;height: 500px;" >
+      <ShoesCard 
       v-for="item in menu"
       :product="item.product"
       :key="item.id"
@@ -14,8 +16,8 @@
 
     />
     </div>
+
     
-  
     
     </div>
 </template>
@@ -57,24 +59,26 @@ import img3 from "../assets/img/TSOVERSIZENOIRROSE.png"
 import img4 from "../assets/img/TSOVERSIZEGREY.png"
 import img5 from "../assets/img/TSOVERSIZEGRPMZN.png"
 
-import NewArrivalCard from "./NewArrivalCard.vue";
+import ShoesCard from "./ShoesCard.vue";
 
 
 export default {
   components: {
 
-    NewArrivalCard
+  ShoesCard
+
+    
 },
   data() {
     return {
-      menu: JSON.parse(localStorage.getItem("newArrival")),
+      menu: JSON.parse(localStorage.getItem("menu")),
     };
   },
   beforeMount() {
     console.log("jules");
     // if (!localStorage.getItem("menu")) {
     localStorage.setItem(
-      "newArrival",
+      "menu",
       JSON.stringify([
         {
           id: 0,
@@ -126,9 +130,25 @@ export default {
           exclusivity : "Member Exclusivity"
           
         },
+        {
+          id: 5,
+          image: img5,
+          product: "TS Oversize Black",
+          price: " 22  $",
+          description :"For men : Oversize black t shirt of the brand : PalmAngeles",
+          exclusivity : "Member Exclusivity"
+          
+        },
+        
+       
+        
         
       ])
     );
-      }
+    // }
+  },
+  beforeUnmount() {
+    alert("You will exit the page");
+  },
 };
 </script>
