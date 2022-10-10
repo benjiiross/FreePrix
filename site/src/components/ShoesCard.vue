@@ -12,7 +12,7 @@
         style =" width: 500px; height: 600px;"
       />
     </div>
-    <div class="d-flex flex-row">
+    <div class="d-flex flex-row justify-content-center mt-3">
       <h4 class="mr-auto p-2">{{ product }}</h4>
       <h4 class="ml-auto p-2">{{ price }}</h4>
     </div>

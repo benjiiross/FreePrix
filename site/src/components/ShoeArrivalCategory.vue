@@ -1,21 +1,45 @@
 <template>
   <div class="bg-white p-5 rounded-5" >
-    <div><h2>New Arrival</h2></div>
+    <div><h2>Most Sales Shoes</h2></div>
     
-    
-    
-    <div style="overflow-y: scroll; width: 25%;height: 500px;" >
-      <ShoesCard 
-      v-for="item in menu"
-      :product="item.product"
-      :key="item.id"
-      :price="item.price"
-      :image="item.image"
-      :description ="item.description"
-      :exclusivity = "item.exclusivity"
+    <div class = d-flex>
+      <div style="overflow-y: scroll; width: 45%;height: 500px;" >
+          <ShoesCard 
+          v-for="item in menu"
+          :product="item.product"
+          :key="item.id"
+          :price="item.price"
+          :image="item.image"
+          :description ="item.description"
+          :exclusivity = "item.exclusivity"
 
-    />
+      />
+      </div>
+
+      <div class = "bg-white p-5" style = "width: 30% ; color: grey; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS';">
+        <h5>Test de texte jules gravier jules gravier jules gravier jules gravier </h5>
+      </div>
+
+      <div style="overflow-y: scroll; width: 45%;height: 500px;" >
+          <ShoesCard 
+          v-for="item in menu"
+          :product="item.product"
+          :key="item.id"
+          :price="item.price"
+          :image="item.image"
+          :description ="item.description"
+          :exclusivity = "item.exclusivity"
+
+      />
+      </div>
+
+      <div class = "bg-white p-5" style = "width: 30% ; color: grey; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS';">
+        <h5>Test de texte jules gravier jules gravier jules gravier jules gravier </h5>
+      </div>
+
     </div>
+    
+    
 
     
     
@@ -52,7 +76,7 @@
 
 <script>
 
-import img0 from "../assets/img/TSBEIGEPARISFR.png"
+import img0 from "../assets/img/NWB550UNC.png"
 import img1 from "../assets/img/TSOVERSIZEPARISB.png"
 import img2 from "../assets/img/TSOVERSIZEKAKI.png"
 import img3 from "../assets/img/TSOVERSIZENOIRROSE.png"
@@ -95,50 +119,8 @@ export default {
           price: " 10 $",
           description :" For men : Oversize white t shirt of the brand : Paris.fr"
           
-        },
-        {
-          id: 2,
-          image: img2,
-          product: "TS Oversize Kaki",
-          price: " 15 $",
-          description :"For men : Oversize kaki t shirt of the brand : ROSEClothing",
-          exclusivity : "Member Exclusivity"
-          
-        },
-        {
-          id: 3,
-          image: img3,
-          product: "TS Oversize Black",
-          price: " 12$",
-          description :"For men : Oversize black t shirt of the brand : ROSEClothing"
-          
-        },
-        {
-          id: 4,
-          image: img4,
-          product: "TS Oversize Grey",
-          price: " 17 $",
-          description :"For men : Oversize grey t shirt of the brand : ASOS"
-          
-        },
-        {
-          id: 5,
-          image: img5,
-          product: "TS Oversize Black",
-          price: " 22  $",
-          description :"For men : Oversize black t shirt of the brand : PalmAngeles",
-          exclusivity : "Member Exclusivity"
-          
-        },
-        {
-          id: 5,
-          image: img5,
-          product: "TS Oversize Black",
-          price: " 22  $",
-          description :"For men : Oversize black t shirt of the brand : PalmAngeles",
-          exclusivity : "Member Exclusivity"
-          
-        },
+        }
+        
         
        
         
