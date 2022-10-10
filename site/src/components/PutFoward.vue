@@ -1,9 +1,9 @@
 <template>
   <div class="p-5" style = "font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS';">
-    <div class="d-flex flex-row justify-content-center p-2">
+    <div class="d-flex flex-row justify-content-center p-2 ">
       <h1>THE FAMOUS</h1>
 
-      <span class="text-primary"><h1>JORDAN 1</h1></span>
+      <span class="text-primary "><h1>JORDAN 1</h1></span>
     </div>
     <div class="text-center text-primary p-2" style="font-weight: bold">
       <h2>UNIVERSITY BLUE</h2>
