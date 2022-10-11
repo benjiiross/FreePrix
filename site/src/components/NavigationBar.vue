@@ -260,7 +260,7 @@
           class="bi bi-basket3 text-primary"
           style="font-size: 2rem; color: white"
         ></i>
-        <i class="bi bi-bag-heart" style="font-size: 2rem; color: white"></i>
+        <!-- <i class="bi bi-bag-heart" style="font-size: 2rem; color: white"></i> -->
       </div>
     </div>
   </nav>
