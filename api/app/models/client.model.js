@@ -2,7 +2,7 @@ module.exports = (sequelize, Sequelize) => {
   const Client = sequelize.define("client", {
     username: {
       type: Sequelize.STRING,
-      allowNull: false,
+      validate: { allowNull: false },
     },
     password: {
       type: Sequelize.STRING,
@@ -18,7 +18,7 @@ module.exports = (sequelize, Sequelize) => {
     },
     mail: {
       type: Sequelize.STRING,
-      isEmail: true,
+      validate: { isEmail: true },
     },
     phone: {
       type: Sequelize.STRING,
