@@ -31,6 +31,9 @@ db.sequelize
   });
 
 require("./app/routes/client.routes")(app);
+require("./app/routes/orderList.routes")(app);
+require("./app/routes/article.routes")(app);
+require("./app/routes/articleBought.routes")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
