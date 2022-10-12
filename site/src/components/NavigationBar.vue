@@ -133,7 +133,7 @@
                     <h5>Clothing</h5>
                     <a
                       style="color: grey; text-decoration: none"
-                      href="google.com"
+                      href="http://127.0.0.1:5173/clothesmen"
                       >All the clothes</a
                     >
                     <br />
@@ -214,7 +214,7 @@
                     <h5>Clothing</h5>
                     <a
                       style="color: grey; text-decoration: none"
-                      href="google.com"
+                      href="http://127.0.0.1:5173/clotheswomen"
                       >All the clothes</a
                     >
                     <br />
