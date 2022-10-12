@@ -6,6 +6,9 @@ module.exports = (sequelize, Sequelize) => {
     category: {
       type: Sequelize.STRING,
     },
+    url: {
+      type: Sequelize.STRING,
+    },
     size: {
       type: Sequelize.STRING,
     },
@@ -15,13 +18,13 @@ module.exports = (sequelize, Sequelize) => {
     price: {
       type: Sequelize.FLOAT(10.2),
     },
-    Indiscount: {
+    inDiscount: {
       type: Sequelize.STRING,
     },
-    Pricebeforediscount: {
+    priceBeforeDiscount: {
       type: Sequelize.FLOAT(10.2),
     },
-    Newarrival: {
+    newArrival: {
       type: Sequelize.BOOLEAN,
     },
   });
