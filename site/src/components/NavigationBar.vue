@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-lg bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="/">
         <img
           src="../assets/img/serpentlogo.png"
           alt=""
