@@ -1,25 +1,21 @@
 module.exports = (app) => {
-  const article = require("../controllers/article.controller.js");
+  const articles = require("../controllers/article.controller.js");
 
   var router = require("express").Router();
 
-  // Create a new Articles
-  router.post("/", article.create);
+  router.post("/", articles.create);
 
-  // Retrieve all Articles
-  router.get("/", article.findAll);
+  router.get("/", articles.findAll);
 
-  // Retrieve a single Articles with id
-  router.get("/:id", article.findOne);
+  router.get("/:id", articles.findOne);
 
-  // Update a Articles with id
-  router.put("/:id", article.update);
+  router.get("/category/:category", articles.findByCategory);
 
-  // Delete a Articles with id
-  router.delete("/:id", article.delete);
+  router.put("/:id", articles.update);
 
-  // Delete all Articles
-  router.delete("/", article.deleteAll);
+  router.delete("/:id", articles.delete);
 
-  app.use("/api/article", router);
+  router.delete("/", articles.deleteAll);
+
+  app.use("/api/articles", router);
 };

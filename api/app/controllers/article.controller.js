@@ -1,31 +1,28 @@
 const db = require("../models");
-const Article = db.article;
+const Article = db.articles;
 const Op = db.Sequelize.Op;
 
-// Create and Save a new Article
 exports.create = (req, res) => {
-  // Validate request
-  if (!req.body.birth) {
+  if (!req.body) {
     res.status(400).send({
       message: "Content can not be empty!",
     });
     return;
   }
 
-  // Create an Article
-  const Article = {
+  const article = {
     reference: req.body.reference,
     category: req.body.category,
+    url: req.body.url,
     size: req.body.size,
     gender: req.body.gender,
     price: req.body.price,
-    indiscount: req.body.indiscount,
-    pricebeforediscount: req.body.pricebeforediscount,
-    newarrival: req.body.newarrival,
+    inDiscount: req.body.inDiscount,
+    priceBeforeDiscount: req.body.priceBeforeDiscount,
+    newArrival: req.body.newArrival,
   };
 
-  // Save Article in the database
-  Article.create(Article)
+  Article.create(article)
     .then((data) => {
       res.send(data);
     })
@@ -37,12 +34,9 @@ exports.create = (req, res) => {
     });
 };
 
-// Retrieve all Articles from the database.
 exports.findAll = (req, res) => {
   const reference = req.query.reference;
 
-  // looks for reference that is like the request
-  // sql equivalent to LIKE
   var condition = reference
     ? { reference: { [Op.like]: `%${reference}%` } }
     : null;
@@ -58,7 +52,6 @@ exports.findAll = (req, res) => {
     });
 };
 
-// Find a single Article with an id
 exports.findOne = (req, res) => {
   const id = req.params.id;
 
@@ -79,7 +72,26 @@ exports.findOne = (req, res) => {
     });
 };
 
-// Update an Article by the id in the request
+exports.findByCategory = (req, res) => {
+  const cat = req.params.category;
+
+  Article.findAll({ where: { category: cat } })
+    .then((data) => {
+      if (data) {
+        res.send(data);
+      } else {
+        res.status(404).send({
+          message: `Cannot find Article with category=${cat}.`,
+        });
+      }
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: "Error retrieving Article with id=" + cat,
+      });
+    });
+};
+
 exports.update = (req, res) => {
   const id = req.params.id;
 
@@ -104,7 +116,6 @@ exports.update = (req, res) => {
     });
 };
 
-// Delete a Article with the specified id in the request
 exports.delete = (req, res) => {
   const id = req.params.id;
 
@@ -129,7 +140,6 @@ exports.delete = (req, res) => {
     });
 };
 
-// Delete all Clients from the database.
 exports.deleteAll = (req, res) => {
   Article.destroy({
     where: {},

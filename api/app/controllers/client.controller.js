@@ -1,5 +1,5 @@
 const db = require("../models");
-const Client = db.clients;
+const Clients = db.clients;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new Client

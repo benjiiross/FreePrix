@@ -2,7 +2,6 @@ module.exports = (sequelize, Sequelize) => {
   const Client = sequelize.define("client", {
     username: {
       type: Sequelize.STRING,
-      validate: { allowNull: false },
     },
     password: {
       type: Sequelize.STRING,
