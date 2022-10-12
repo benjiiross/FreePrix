@@ -9,6 +9,9 @@ module.exports = (sequelize, Sequelize) => {
     name: {
       type: Sequelize.STRING,
     },
+    brand: {
+      type: Sequelize.STRING,
+    },
     description: {
       type: Sequelize.STRING,
     },
@@ -21,6 +24,9 @@ module.exports = (sequelize, Sequelize) => {
     },
     price: {
       type: Sequelize.FLOAT(10.2),
+    },
+    newArrival: {
+      type: Sequelize.BOOLEAN,
     },
   });
 

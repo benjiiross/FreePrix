@@ -6,7 +6,7 @@
     :image1="item.image1"
     :image2="item.image2"
     :image3="item.image3"
-    :id="item.id"
+    :key="item.id"
     :product="item.product"
     :price="item.price"
     :description="item.description"
