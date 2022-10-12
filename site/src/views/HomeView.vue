@@ -1,12 +1,14 @@
 <template>
-  <NavigationBar/>
-    <PutFoward1/>
-    <NewArrivalCategory/>
-  
-    <PanelPhoto/>
-    <PutFoward2/>
-    <AllLinks/>
-    <AboutUs/>
+  <NavigationBar />
+  <PutFoward2 />
+
+  <NewArrivalCategory />
+
+  <PanelPhoto />
+  <PutFoward1 />
+
+  <AllLinks />
+  <AboutUs />
 </template>
 
 <script>
@@ -26,7 +28,6 @@ export default {
     PutFoward2,
     PanelPhoto,
     AllLinks,
-    
   },
 };
 </script>

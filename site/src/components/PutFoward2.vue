@@ -29,13 +29,7 @@
         <i class="bi bi-cart rounded-5 p-1" style="color: white"></i>
       </button>
 
-      <button
-        type="button"
-        class="btn btn-primary rounded-5 m-1"
-        style="font-weight: bold"
-      >
-        More
-      </button>
+      <button type="button" class="btn btn-primary rounded-5 m-1">More</button>
     </div>
   </div>
 </template>
