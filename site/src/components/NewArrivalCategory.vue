@@ -40,12 +40,10 @@ import img3 from "../assets/img/TSOVERSIZENOIRROSE.png";
 import img4 from "../assets/img/TSOVERSIZEGREY.png";
 import img5 from "../assets/img/TSOVERSIZEGRPMZN.png";
 
-import NewArrivalCard from "./NewArrivalCard.vue";
 import HorizontalScrollComponent from "./HorizontalScrollComponent.vue";
 
 export default {
   components: {
-    NewArrivalCard,
     HorizontalScrollComponent,
   },
   data() {
@@ -53,7 +51,7 @@ export default {
       newArrival: [
         {
           id: 0,
-          image: img0,
+          url: img0,
           product: "TS Regular Beige",
           price: " 10 $",
           description:
@@ -61,7 +59,7 @@ export default {
         },
         {
           id: 1,
-          image: img1,
+          url: img1,
           product: "TS Oversize White",
           price: " 10 $",
           description:
@@ -69,7 +67,7 @@ export default {
         },
         {
           id: 2,
-          image: img2,
+          url: img2,
           product: "TS Oversize Kaki",
           price: " 15 $",
           description:
@@ -78,7 +76,7 @@ export default {
         },
         {
           id: 3,
-          image: img3,
+          url: img3,
           product: "TS Oversize Black",
           price: " 12$",
           description:
@@ -86,14 +84,14 @@ export default {
         },
         {
           id: 4,
-          image: img4,
+          url: img4,
           product: "TS Oversize Grey",
           price: " 17 $",
           description: "For men : Oversize grey t shirt of the brand : ASOS",
         },
         {
           id: 5,
-          image: img5,
+          url: img5,
           product: "TS Oversize Black",
           price: " 22  $",
           description:

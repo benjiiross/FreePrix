@@ -2,45 +2,41 @@
   <div class="d-flex flex-row justify-content-around p-5">
     <div>
       <h2>Trends</h2>
-      <a style="color: grey; text-decoration: none" href="google.com"
-        >New arrival</a
-      >
+      <a class="text-decoration-none text-secondary" href="#">New arrival</a>
       <br />
-      <a style="color: grey; text-decoration: none" href="#">Best seller</a>
+      <a class="text-decoration-none text-secondary" href="#">Best seller</a>
       <br />
-      <a style="color: grey; text-decoration: none" href="#"
+      <a class="text-decoration-none text-secondary" href="#"
         >Member exclusivity</a
       >
     </div>
     <div>
       <h2>Sneakers</h2>
-      <a style="color: grey; text-decoration: none" href="google.com"
+      <a class="text-decoration-none text-secondary" href="#"
         >All the sneakers</a
       >
       <br />
-      <a style="color: grey; text-decoration: none" href="#">Jordan</a>
+      <a class="text-decoration-none text-secondary" href="#">Jordan</a>
       <br />
-      <a style="color: grey; text-decoration: none" href="#">New Balance</a>
+      <a class="text-decoration-none text-secondary" href="#">New Balance</a>
       <br />
-      <a style="color: grey; text-decoration: none" href="#">Vans</a>
+      <a class="text-decoration-none text-secondary" href="#">Vans</a>
       <br />
-      <a style="color: grey; text-decoration: none" href="#">Nike</a>
+      <a class="text-decoration-none text-secondary" href="#">Nike</a>
     </div>
     <div>
       <h2>Clothing</h2>
-      <a
-        style="color: grey; text-decoration: none"
-        href="http://127.0.0.1:5173/allclothes"
+      <a class="text-decoration-none text-secondary" href="/allclothes"
         >All the clothes</a
       >
       <br />
-      <a style="color: grey; text-decoration: none" href="#">Tee-shirts</a>
+      <a class="text-decoration-none text-secondary" href="#">Tee-shirts</a>
       <br />
-      <a style="color: grey; text-decoration: none" href="#">Pants</a>
+      <a class="text-decoration-none text-secondary" href="#">Pants</a>
       <br />
-      <a style="color: grey; text-decoration: none" href="#">Hoodies</a>
+      <a class="text-decoration-none text-secondary" href="#">Hoodies</a>
       <br />
-      <a style="color: grey; text-decoration: none" href="#">Caps</a>
+      <a class="text-decoration-none text-secondary" href="#">Caps</a>
     </div>
   </div>
 </template>

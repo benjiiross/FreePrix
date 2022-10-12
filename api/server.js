@@ -1,10 +1,11 @@
+require("dotenv/config");
 const express = require("express");
 const cors = require("cors");
 
 const app = express();
 
 var corsOptions = {
-  origin: "http://localhost:5173",
+  origin: `http://localhost:${process.env.FRONTEND_PORT}`,
 };
 
 app.use(cors(corsOptions));
@@ -20,6 +21,7 @@ app.get("/", (req, res) => {
 const db = require("./app/models");
 db.sequelize
   .sync({
+    // recreates the db
     // force: true,
   })
   .then(() => {

@@ -3,7 +3,7 @@
     <div><h2>Pants</h2></div>
 
     <div class="d-flex flex-row" style="overflow-x: scroll; width: auto">
-      <NewArrivalCard
+      <ArticleCard
         v-for="item in pantsList"
         :product="item.product"
         :key="item.id"
@@ -42,15 +42,15 @@
 </style>
 
 <script>
-import NewArrivalCard from "./NewArrivalCard.vue";
+import ArticleCard from "./ArticleCard.vue";
 
 export default {
   components: {
-    NewArrivalCard,
+    ArticleCard,
   },
   data() {
     return {
-      pantsList,
+      pantsList: [],
     };
   },
   beforeMount() {},

@@ -2,16 +2,7 @@
   <div class="bg-white p-5 rounded-5">
     <div><h2>Tee-shirts</h2></div>
 
-    <div class="d-flex flex-row" style="overflow-x: scroll; width: auto">
-      <NewArrivalCard
-        v-for="item in tshirtList"
-        :reference="hfeuhgepih"
-        :key="item.id"
-        :price="item.price"
-        :image="item.url"
-        :description="item.url"
-      />
-    </div>
+    <HorizontalScrollComponent :articles="tshirtList" />
   </div>
 </template>
 
@@ -42,11 +33,11 @@
 </style>
 
 <script>
-import NewArrivalCard from "./NewArrivalCard.vue";
+import HorizontalScrollComponent from "./HorizontalScrollComponent.vue";
 
 export default {
   components: {
-    NewArrivalCard,
+    HorizontalScrollComponent,
   },
   data() {
     return {

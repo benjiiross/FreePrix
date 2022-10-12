@@ -3,35 +3,50 @@ const Article = db.articles;
 const Op = db.Sequelize.Op;
 
 exports.create = (req, res) => {
-  if (!req.body) {
-    res.status(400).send({
-      message: "Content can not be empty!",
+  if (Array.isArray(req)) {
+    req.forEach((item) => {
+      article = {
+        reference: item.reference,
+        category: item.category,
+        name: item.name,
+        description: item.description,
+        url: item.url,
+        gender: item.gender,
+        price: item.price,
+      };
+      Article.create(article)
+        .then((data) => {
+          res.send(data);
+        })
+        .catch((err) => {
+          res.status(500).send({
+            message:
+              err.message || "Some error occurred while creating the Article.",
+          });
+        });
     });
-    return;
-  }
+  } else {
+    const article = {
+      reference: req.body.reference,
+      category: req.body.category,
+      name: req.body.name,
+      description: req.body.description,
+      url: req.body.url,
+      gender: req.body.gender,
+      price: req.body.price,
+    };
 
-  const article = {
-    reference: req.body.reference,
-    category: req.body.category,
-    url: req.body.url,
-    size: req.body.size,
-    gender: req.body.gender,
-    price: req.body.price,
-    inDiscount: req.body.inDiscount,
-    priceBeforeDiscount: req.body.priceBeforeDiscount,
-    newArrival: req.body.newArrival,
-  };
-
-  Article.create(article)
-    .then((data) => {
-      res.send(data);
-    })
-    .catch((err) => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while creating the Article.",
+    Article.create(article)
+      .then((data) => {
+        res.send(data);
+      })
+      .catch((err) => {
+        res.status(500).send({
+          message:
+            err.message || "Some error occurred while creating the Article.",
+        });
       });
-    });
+  }
 };
 
 exports.findAll = (req, res) => {

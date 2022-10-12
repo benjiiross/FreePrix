@@ -1,23 +1,22 @@
 <template>
   <div class="bg-white p-5 rounded-5">
     <div class="d-flex flex-row" style="overflow-x: scroll; width: auto">
-      <NewArrivalCard
+      <ArticleCard
         v-for="item in articles"
-        :product="item.product"
-        :key="item.id"
-        :price="item.price"
-        :image="item.image"
+        :product="item.name"
+        :url="item.url"
         :description="item.description"
         :exclusivity="item.exclusivity"
+        :key="item.id"
       />
     </div>
   </div>
 </template>
 
 <script>
-import NewArrivalCard from "./NewArrivalCard.vue";
+import ArticleCard from "./ArticleCard.vue";
 export default {
-  components: { NewArrivalCard },
+  components: { ArticleCard },
   props: {
     articles: Array,
   },

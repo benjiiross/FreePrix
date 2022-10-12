@@ -6,26 +6,21 @@ module.exports = (sequelize, Sequelize) => {
     category: {
       type: Sequelize.STRING,
     },
-    url: {
+    name: {
       type: Sequelize.STRING,
     },
-    size: {
+    description: {
       type: Sequelize.STRING,
+    },
+    url: {
+      type: Sequelize.STRING,
+      validate: { isUrl: true },
     },
     gender: {
       type: Sequelize.STRING,
     },
     price: {
       type: Sequelize.FLOAT(10.2),
-    },
-    inDiscount: {
-      type: Sequelize.STRING,
-    },
-    priceBeforeDiscount: {
-      type: Sequelize.FLOAT(10.2),
-    },
-    newArrival: {
-      type: Sequelize.BOOLEAN,
     },
   });
 
