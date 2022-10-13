@@ -14,6 +14,7 @@ exports.create = (req, res) => {
         url: item.url,
         gender: item.gender,
         price: item.price,
+        newArrival: item.newArrival,
       };
       Article.create(article)
         .then((data) => {
@@ -36,6 +37,7 @@ exports.create = (req, res) => {
       url: req.body.url,
       gender: req.body.gender,
       price: req.body.price,
+      newArrival: req.body.newArrival,
     };
 
     Article.create(article)
