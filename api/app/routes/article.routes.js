@@ -13,6 +13,8 @@ module.exports = (app) => {
 
   router.get("/brand/:brand", articles.findByBrand);
 
+  router.get("/gender/:gender", articles.findByGender);
+
   router.put("/:id", articles.update);
 
   router.delete("/:id", articles.delete);

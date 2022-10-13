@@ -22,7 +22,7 @@ const db = require("./app/models");
 db.sequelize
   .sync({
     // recreates the db
-    //force: true,
+    // force: true,
   })
   .then(() => {
     console.log("Synced db.");

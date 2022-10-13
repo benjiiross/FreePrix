@@ -80,7 +80,7 @@ exports.findByCategory = (req, res) => {
     })
     .catch((err) => {
       res.status(500).send({
-        message: "Error retrieving Article with id=" + cat,
+        message: "Error retrieving Article with category=" + cat,
       });
     });
 };
@@ -100,7 +100,27 @@ exports.findByBrand = (req, res) => {
     })
     .catch((err) => {
       res.status(500).send({
-        message: "Error retrieving Article with id=" + brandName,
+        message: "Error retrieving Article with brand=" + brandName,
+      });
+    });
+};
+
+exports.findByGender = (req, res) => {
+  const genderName = req.params.gender;
+
+  Article.findAll({ where: { gender: genderName } })
+    .then((data) => {
+      if (data) {
+        res.send(data);
+      } else {
+        res.status(404).send({
+          message: `Cannot find Article with gender=${genderName}.`,
+        });
+      }
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: "Error retrieving Article with gender=" + genderName,
       });
     });
 };
