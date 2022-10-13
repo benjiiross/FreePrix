@@ -11,6 +11,8 @@ module.exports = (app) => {
 
   router.get("/category/:category", articles.findByCategory);
 
+  router.get("/brand/:brand", articles.findByBrand);
+
   router.put("/:id", articles.update);
 
   router.delete("/:id", articles.delete);

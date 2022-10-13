@@ -3,54 +3,28 @@ const Article = db.articles;
 const Op = db.Sequelize.Op;
 
 exports.create = (req, res) => {
-  if (Array.isArray(req)) {
-    req.forEach((item) => {
-      article = {
-        reference: item.reference,
-        category: item.category,
-        name: item.name,
-        brand: req.body.brand,
-        description: item.description,
-        url: item.url,
-        gender: item.gender,
-        price: item.price,
-        newArrival: item.newArrival,
-      };
-      Article.create(article)
-        .then((data) => {
-          res.send(data);
-        })
-        .catch((err) => {
-          res.status(500).send({
-            message:
-              err.message || "Some error occurred while creating the Article.",
-          });
-        });
-    });
-  } else {
-    const article = {
-      reference: req.body.reference,
-      category: req.body.category,
-      name: req.body.name,
-      brand: req.body.brand,
-      description: req.body.description,
-      url: req.body.url,
-      gender: req.body.gender,
-      price: req.body.price,
-      newArrival: req.body.newArrival,
-    };
+  const article = {
+    reference: req.body.reference,
+    category: req.body.category,
+    name: req.body.name,
+    brand: req.body.brand,
+    description: req.body.description,
+    url: req.body.url,
+    gender: req.body.gender,
+    price: req.body.price,
+    newArrival: req.body.newArrival,
+  };
 
-    Article.create(article)
-      .then((data) => {
-        res.send(data);
-      })
-      .catch((err) => {
-        res.status(500).send({
-          message:
-            err.message || "Some error occurred while creating the Article.",
-        });
+  Article.create(article)
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while creating the Article.",
       });
-  }
+    });
 };
 
 exports.findAll = (req, res) => {
@@ -107,6 +81,26 @@ exports.findByCategory = (req, res) => {
     .catch((err) => {
       res.status(500).send({
         message: "Error retrieving Article with id=" + cat,
+      });
+    });
+};
+
+exports.findByBrand = (req, res) => {
+  const brandName = req.params.brand;
+
+  Article.findAll({ where: { brand: brandName } })
+    .then((data) => {
+      if (data) {
+        res.send(data);
+      } else {
+        res.status(404).send({
+          message: `Cannot find Article with brand=${brandName}.`,
+        });
+      }
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: "Error retrieving Article with id=" + brandName,
       });
     });
 };
