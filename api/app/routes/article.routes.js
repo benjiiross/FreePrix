@@ -5,15 +5,9 @@ module.exports = (app) => {
 
   router.post("/", articles.create);
 
-  router.get("/", articles.findAll);
+  router.get("/", articles.findArticles);
 
   router.get("/:id", articles.findOne);
-
-  router.get("/category/:category", articles.findByCategory);
-
-  router.get("/brand/:brand", articles.findByBrand);
-
-  router.get("/gender/:gender", articles.findByGender);
 
   router.put("/:id", articles.update);
 

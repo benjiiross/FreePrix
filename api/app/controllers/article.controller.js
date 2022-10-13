@@ -27,12 +27,31 @@ exports.create = (req, res) => {
     });
 };
 
-exports.findAll = (req, res) => {
-  const reference = req.query.reference;
+exports.findArticles = (req, res) => {
+  const categoryReq = req.query.category;
+  const brandReq = req.query.brand;
+  const genderReq = req.query.gender;
+  const newArrivalReq = req.query.newArrival;
 
-  var condition = reference
-    ? { reference: { [Op.like]: `%${reference}%` } }
-    : null;
+  let condition = {};
+
+  // if request for every article => no filters
+  if (!(categoryReq || brandReq || genderReq || newArrivalReq)) {
+    condition = null;
+  } else {
+    if (categoryReq) {
+      condition.category = categoryReq;
+    }
+    if (brandReq) {
+      condition.brand = brandReq;
+    }
+    if (genderReq) {
+      condition.gender = genderReq;
+    }
+    if (newArrivalReq) {
+      condition.newArrival = newArrivalReq;
+    }
+  }
 
   Article.findAll({ where: condition })
     .then((data) => {
