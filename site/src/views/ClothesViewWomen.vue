@@ -62,7 +62,7 @@ export default {
       options
     )
       .then((response) => response.json())
-      .then((response) => (this.pantstList = response))
+      .then((response) => (this.pantsList = response))
       .catch((err) => console.error(err));
 
     fetch(
