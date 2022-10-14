@@ -36,6 +36,7 @@ exports.findArticles = (req, res) => {
   let condition = {};
 
   // if request for every article => no filters
+
   if (!(categoryReq || brandReq || genderReq || newArrivalReq)) {
     condition = null;
   } else {
