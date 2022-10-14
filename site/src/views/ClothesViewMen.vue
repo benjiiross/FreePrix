@@ -189,6 +189,39 @@ export default {
       ],
     };
   },
+
+  beforeMount() {
+    const options = { method: "GET" };
+
+    fetch(
+      "http://localhost:8080/api/articles?gender=men&category=tee-shirt",
+      options
+    )
+      .then((response) => response.json())
+      .then((response) => (this.tshirtHList = response))
+      .catch((err) => console.error(err));
+
+    fetch(
+      "http://localhost:8080/api/articles?gender=men&category=hoodie",
+      options
+    )
+      .then((response) => response.json())
+      .then((response) => (this.HoodieHList = response))
+      .catch((err) => console.error(err));
+
+    fetch(
+      "http://localhost:8080/api/articles?gender=men&category=pants",
+      options
+    )
+      .then((response) => response.json())
+      .then((response) => (this.pantsHList = response))
+      .catch((err) => console.error(err));
+
+    fetch("http://localhost:8080/api/articles?gender=men&category=cap", options)
+      .then((response) => response.json())
+      .then((response) => (this.CapHList = response))
+      .catch((err) => console.error(err));
+  },
   components: {
     AboutUs,
     NavigationBar,
