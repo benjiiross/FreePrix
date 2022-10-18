@@ -1,11 +1,11 @@
 const db = require("../models");
-const Clients = db.clients;
+const User = db.users;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new Client
 exports.create = (req, res) => {
   // Validate request
-  if (!req.body.birth) {
+  if (!req.body.username) {
     res.status(400).send({
       message: "Content can not be empty!",
     });
@@ -13,7 +13,7 @@ exports.create = (req, res) => {
   }
 
   // Create a Client
-  const client = {
+  const user = {
     username: req.body.username,
     password: req.body.password,
     name: req.body.name,
@@ -24,7 +24,7 @@ exports.create = (req, res) => {
   };
 
   // Save Client in the database
-  Client.create(client)
+  User.create(user)
     .then((data) => {
       res.send(data);
     })
@@ -46,7 +46,7 @@ exports.findAll = (req, res) => {
     ? { username: { [Op.like]: `%${username}%` } }
     : null;
 
-  Client.findAll({ where: condition })
+  User.findAll({ where: condition })
     .then((data) => {
       res.send(data);
     })
@@ -61,7 +61,7 @@ exports.findAll = (req, res) => {
 exports.findOne = (req, res) => {
   const id = req.params.id;
 
-  Client.findByPk(id)
+  User.findByPk(id)
     .then((data) => {
       if (data) {
         res.send(data);
@@ -78,11 +78,27 @@ exports.findOne = (req, res) => {
     });
 };
 
+exports.findByEmail = async (req, res) => {
+  const mail = req.body.mail;
+
+  var condition = mail ? { mail: mail } : null;
+
+  var result;
+  await User.findOne({ where: condition })
+    .then((data) => {
+      result = data;
+    })
+    .catch((data) => {
+      result = data;
+    });
+  return result;
+};
+
 // Update a Client by the id in the request
 exports.update = (req, res) => {
   const id = req.params.id;
 
-  Client.update(req.body, {
+  User.update(req.body, {
     where: { id: id },
   })
     .then((num) => {
@@ -107,7 +123,7 @@ exports.update = (req, res) => {
 exports.delete = (req, res) => {
   const id = req.params.id;
 
-  Client.destroy({
+  User.destroy({
     where: { id: id },
   })
     .then((num) => {
@@ -130,7 +146,7 @@ exports.delete = (req, res) => {
 
 // Delete all Clients from the database.
 exports.deleteAll = (req, res) => {
-  Client.destroy({
+  User.destroy({
     where: {},
     truncate: false,
   })

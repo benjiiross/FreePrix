@@ -7,6 +7,7 @@
         :url="item.url"
         :description="item.description"
         :exclusivity="item.exclusivity"
+        :reference="item.reference"
         :key="item.id"
       />
     </div>

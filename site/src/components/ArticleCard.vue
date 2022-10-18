@@ -4,14 +4,15 @@
     v-bind:style="{ backgroundColor: bgColor }"
     ref="cofcard"
   >
-    <div>
+    <router-link to="/article?ref={{reference}}">
       <img
         :src="url"
         class="rounded-5 shadow shadow-intensity-xl"
         alt="Responsive image"
         style="width: 500px; height: 600px"
       />
-    </div>
+    </router-link>
+
     <div class="d-flex flex-row">
       <h4 class="mr-auto p-2">{{ product }}</h4>
       <h4 class="ml-auto p-2">{{ price }}</h4>
@@ -48,6 +49,7 @@ export default {
     bgColor: String,
     description: String,
     exclusivity: String,
+    reference: Number,
   },
 };
 </script>

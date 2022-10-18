@@ -31,10 +31,11 @@ db.sequelize
     console.log("Failed to sync db: " + err.message);
   });
 
-require("./app/routes/client.routes")(app);
+require("./app/routes/user.routes")(app);
 require("./app/routes/orderList.routes")(app);
 require("./app/routes/article.routes")(app);
 require("./app/routes/articleBought.routes")(app);
+require("./app/routes/login.routes")(app);
 
 const PORT = process.env.PORT || `${process.env.BACKEND_PORT}`;
 app.listen(PORT, () => {
