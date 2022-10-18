@@ -1,7 +1,7 @@
 <template>
   <NavigationBar />
   <div class="d-flex flex-column p-5 rounded-5 m-2">
-    <h2>Sneakers</h2>
+    <h2 class="text-center">Sneakers</h2>
     <div class="d-flex flex-row flex-wrap flex-row justify-content-center">
       <SneakersCard
         v-for="item in sneakersList"

@@ -13,8 +13,8 @@
       />
     </div>
     <div class="d-flex flex-row">
-      <h4 class="mr-auto p-2">{{ product }}</h4>
-      <h4 class="ml-auto p-2">{{ price }}</h4>
+      <h4 class="mr-auto p-2">{{ name }}</h4>
+      <h4 class="ml-auto p-2">{{ price }}$</h4>
     </div>
     <div class="d-flex flex-row justify-content-between">
       <h6 class="mr-auto p-2 justify-content-start">{{ description }}</h6>
@@ -42,7 +42,7 @@
 <script>
 export default {
   props: {
-    product: String,
+    name: String,
     price: Number,
     url: String,
     bgColor: String,

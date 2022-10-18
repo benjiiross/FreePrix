@@ -34,7 +34,7 @@
           </li>
           <li class="nav-item">
             <a
-              href="/clothesmen"
+              href="#"
               class="nav-link"
               :class="{ 'active underline': currentPopup === 'men' }"
               @click="togglePopup('men')"
@@ -43,7 +43,7 @@
           </li>
           <li class="nav-item">
             <a
-              href="/clotheswomen"
+              href="#"
               class="nav-link"
               :class="{ 'active underline': currentPopup === 'women' }"
               @click="togglePopup('women')"
@@ -115,7 +115,7 @@
         </div>
         <div class="d-flex flex-column">
           <h5>Sneakers</h5>
-          <a class="text-decoration-none text-secondary" href="#"
+          <a class="text-decoration-none text-secondary" href="/sneakers"
             >All sneakers</a
           >
           <a class="text-decoration-none text-secondary" href="#">Jordan</a>
@@ -127,7 +127,7 @@
         </div>
         <div class="d-flex flex-column">
           <h5>Clothing</h5>
-          <a class="text-decoration-none text-secondary" href="#"
+          <a class="text-decoration-none text-secondary" href="clothesmen"
             >All the clothes</a
           >
           <a class="text-decoration-none text-secondary" href="#">Tee-shirts</a>
@@ -159,7 +159,7 @@
         </div>
         <div class="d-flex flex-column">
           <h5>Sneakers</h5>
-          <a class="text-decoration-none text-secondary" href="#"
+          <a class="text-decoration-none text-secondary" href="/sneakers"
             >All sneakers</a
           >
           <a class="text-decoration-none text-secondary" href="#">Jordan</a>
@@ -171,7 +171,7 @@
         </div>
         <div class="d-flex flex-column">
           <h5>Clothing</h5>
-          <a class="text-decoration-none text-secondary" href="#"
+          <a class="text-decoration-none text-secondary" href="/clotheswomen"
             >All the clothes</a
           >
           <a class="text-decoration-none text-secondary" href="#">Tee-shirts</a>

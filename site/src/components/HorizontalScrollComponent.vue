@@ -3,11 +3,12 @@
     <div class="d-flex flex-row" style="overflow-x: scroll; width: auto">
       <ArticleCard
         v-for="item in articles"
-        :product="item.name"
+        :name="item.name"
         :url="item.url"
         :description="item.description"
         :exclusivity="item.exclusivity"
         :key="item.id"
+        :price="item.price"
       />
     </div>
   </div>
