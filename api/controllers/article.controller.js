@@ -28,6 +28,7 @@ exports.create = (req, res) => {
 };
 
 exports.findArticles = (req, res) => {
+  const referenceReq = req.query.reference;
   const categoryReq = req.query.category;
   const brandReq = req.query.brand;
   const genderReq = req.query.gender;
@@ -36,9 +37,15 @@ exports.findArticles = (req, res) => {
   let condition = {};
 
   // if request for every article => no filters
-  if (!(categoryReq || brandReq || genderReq || newArrivalReq)) {
+
+  if (
+    !(referenceReq || categoryReq || brandReq || genderReq || newArrivalReq)
+  ) {
     condition = null;
   } else {
+    if (referenceReq) {
+      condition.reference = referenceReq;
+    }
     if (categoryReq) {
       condition.category = categoryReq;
     }

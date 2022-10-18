@@ -15,6 +15,7 @@
     "bootstrap-vue": "^2.22.0",
     "jquery": "^3.6.1",
     "popper.js": "^1.16.1",
+    "sass": "^1.55.0",
     "sequelize": "^6.23.2",
     "vue": "^3.2.40",
     "vue-axios": "^3.4.1",

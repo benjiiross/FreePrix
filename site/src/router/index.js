@@ -22,11 +22,17 @@ const router = createRouter({
       path: "/article",
       name: "article",
       component: () => import("../views/ArticleView.vue"),
+      props: (route) => ({ reference: route.query.ref }),
     },
     {
       path: "/sneakers",
       name: "sneakers",
       component: () => import("../views/SneakersView.vue"),
+    },
+    {
+      path: "/login",
+      name: "login",
+      component: () => import("../views/LoginVue.vue"),
     },
 
     // {

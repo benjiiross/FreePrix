@@ -12,7 +12,7 @@
 
         <div class="m-4">
           <h3>{{ id }}</h3>
-          <p>{{ product }}</p>
+          <p>{{ name }}</p>
           <p>Choose a size</p>
           <div class="d-flex flex-row">
             <a
