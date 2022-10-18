@@ -67,7 +67,7 @@ export default {
           password: component.password,
         }),
       };
-      fetch("http://localhost:8080/api/login", options)
+      fetch("/api/login", options)
         .then((response) => {
           return response.json();
         })
@@ -89,7 +89,7 @@ export default {
           Authorization: component.token,
         },
       };
-      fetch("http://localhost:8080/api/login/check", options)
+      fetch("/api/login/check", options)
         .then((response) => {
           return response.json();
         })
@@ -98,14 +98,13 @@ export default {
         });
     },
     getUsers: function () {
-      var component = this;
       let options = {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
         },
       };
-      fetch("http://localhost:8080/api/users", options)
+      fetch("/api/users", options)
         .then((response) => {
           return response.json();
         })

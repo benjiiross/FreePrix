@@ -51,7 +51,7 @@ export default {
 
     fetch(
       // `http://localhost:8080/api/articles?reference=${this.reference}`,
-      `http://localhost:8080/api/articles?reference=100001`,
+      `/api/articles?reference=100001`,
       options
     )
       .then((response) => response.json())

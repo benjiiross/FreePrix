@@ -1,7 +1,7 @@
 module.exports = {
   HOST: "localhost",
   USER: "root",
-  PASSWORD: `${process.env.DB_PASSWORD}`,
+  PASSWORD: "7573B5F755",
   DB: "freeprix",
   dialect: "mysql",
   pool: {

@@ -37,7 +37,7 @@ export default {
     HorizontalScrollComponent,
   },
   beforeMount() {
-    fetch("http://localhost:8080/api/articles?newArrival=1")
+    fetch("/api/articles?newArrival=1")
       .then((response) => response.json())
       .then((response) => (this.newArrival = response))
       .catch((err) => console.error(err));

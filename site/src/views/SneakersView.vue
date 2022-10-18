@@ -40,7 +40,7 @@ export default {
   beforeMount() {
     const options = { method: "GET" };
 
-    fetch("http://localhost:8080/api/articles?category=sneakers", options)
+    fetch("/api/articles?category=sneakers", options)
       .then((response) => response.json())
       .then((response) => (this.sneakersList = response))
       .catch((err) => console.error(err));

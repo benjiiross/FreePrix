@@ -41,34 +41,22 @@ export default {
   beforeMount() {
     const options = { method: "GET" };
 
-    fetch(
-      "http://localhost:8080/api/articles?gender=women&category=tee-shirt",
-      options
-    )
+    fetch("/api/articles?gender=women&category=tee-shirt", options)
       .then((response) => response.json())
       .then((response) => (this.tshirtList = response))
       .catch((err) => console.error(err));
 
-    fetch(
-      "http://localhost:8080/api/articles?gender=women&category=hoodie",
-      options
-    )
+    fetch("/api/articles?gender=women&category=hoodie", options)
       .then((response) => response.json())
       .then((response) => (this.HoodieList = response))
       .catch((err) => console.error(err));
 
-    fetch(
-      "http://localhost:8080/api/articles?gender=women&category=pants",
-      options
-    )
+    fetch("/api/articles?gender=women&category=pants", options)
       .then((response) => response.json())
       .then((response) => (this.pantsList = response))
       .catch((err) => console.error(err));
 
-    fetch(
-      "http://localhost:8080/api/articles?gender=women&category=cap",
-      options
-    )
+    fetch("/api/articles?gender=women&category=cap", options)
       .then((response) => response.json())
       .then((response) => (this.CapList = response))
       .catch((err) => console.error(err));
