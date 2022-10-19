@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid d-flex justify-content-between p-2">
       <div>
-        <a class="navbar-brand" href="http://127.0.0.1:5173/">
+        <a class="navbar-brand" href="">
           <img
             src="../assets/img/serpentlogo.png"
             alt=""
