@@ -1,3 +1,4 @@
+const { where } = require("sequelize");
 const db = require("../models");
 const Article = db.articles;
 const Op = db.Sequelize.Op;
@@ -72,21 +73,21 @@ exports.findArticles = (req, res) => {
 };
 
 exports.findOne = (req, res) => {
-  const id = req.params.id;
+  const reference = req.params.reference;
 
-  Article.findByPk(id)
+  Article.findOne({ where: { reference: reference } })
     .then((data) => {
       if (data) {
         res.send(data);
       } else {
         res.status(404).send({
-          message: `Cannot find Article with id=${id}.`,
+          message: `Cannot find Article with reference=${reference}.`,
         });
       }
     })
     .catch((err) => {
       res.status(500).send({
-        message: "Error retrieving Article with id=" + id,
+        message: "Error retrieving Article with reference=" + reference + err,
       });
     });
 };
