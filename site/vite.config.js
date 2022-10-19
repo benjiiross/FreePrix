@@ -13,9 +13,11 @@ export default defineConfig({
   },
   server: {
     proxy: {
-      "/api": {
+      "^/api/.*": {
         target: "http://localhost:3000/",
-        pathRewrite: { "^/api": "" },
+        changeOrigin: true,
+        secure: false,
+        ws: true,
       },
     },
   },

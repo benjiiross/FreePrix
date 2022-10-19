@@ -4,11 +4,9 @@ const sessions = require("./session.controller");
 exports.login = async (req, res) => {
   let user = await users.findByEmail(req, res);
   // if the user exists and password matches
-  console.log(user.id, user.password, req.password);
   if (user && user.id && user.password == req.body.password) {
     // search for a session for this user
     let session = await sessions.findByUserId(user.id);
-
     // if there is a session, check if it's expired
     let isTokenExpired = session
       ? new Date(session.validUntil) - new Date() <= 0

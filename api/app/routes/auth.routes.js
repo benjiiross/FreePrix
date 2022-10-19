@@ -15,5 +15,5 @@ module.exports = (app) => {
     }
   });
 
-  app.use("/api/auth", router);
+  app.use("/api/login", router);
 };

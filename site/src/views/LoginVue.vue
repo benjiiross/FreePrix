@@ -16,7 +16,7 @@
               v-model="password"
             />
           </div>
-          <button  @click="login" type="button">Submit</button>
+          <button @click="login" type="button">Submit</button>
         </div>
       </form>
     </section>
@@ -38,6 +38,30 @@
       <button @click="getUsers">Get users</button>
     </section>
   </div>
+
+  <form>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Email address</label>
+      <input
+        type="email"
+        class="form-control"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+      />
+      <div id="emailHelp" class="form-text">
+        We'll never share your email with anyone else.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Password</label>
+      <input type="password" class="form-control" id="exampleInputPassword1" />
+    </div>
+    <div class="mb-3 form-check">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1" />
+      <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
 </template>
 
 <script>
@@ -58,10 +82,10 @@ export default {
         headers: {
           "Content-Type": "application/json",
         },
-        body: {
+        body: JSON.stringify({
           email: this.email,
           password: this.password,
-        },
+        }),
       };
       fetch("/api/login", options)
         .then((response) => response.json())
@@ -70,7 +94,7 @@ export default {
           this.token = data.token;
         })
         .catch((error) => {
-          console.log(error);
+          wrongLogin(error);
           this.isLoggedIn = false;
         });
     },
@@ -110,47 +134,7 @@ export default {
           console.log(error);
         });
     },
+    wrongLogin(error) {},
   },
 };
 </script>
-
-<style scoped lang="scss">
-.login {
-  form {
-    width: 50%;
-    margin: auto;
-    text-align: left;
-    .innerFrame {
-      width: 185px;
-      margin: auto;
-      label {
-        display: block;
-      }
-      input {
-        margin-bottom: 20px;
-      }
-    }
-  }
-}
-.separator {
-  width: 100px;
-  margin: 30px auto;
-  background-color: #aaa;
-  border: 2px solid #aaa;
-}
-.test {
-  width: 185px;
-  margin: auto;
-  text-align: left;
-  table {
-    margin-bottom: 20px;
-    border-collapse: collapse;
-    tr {
-      td {
-        padding: 5px;
-        border: 1px solid black;
-      }
-    }
-  }
-}
-</style>
