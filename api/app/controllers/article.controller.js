@@ -1,4 +1,3 @@
-const { where } = require("sequelize");
 const db = require("../models");
 const Article = db.articles;
 const Op = db.Sequelize.Op;

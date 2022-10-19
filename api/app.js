@@ -12,10 +12,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
+// importing routes
 require("./app/routes/user.routes")(app);
 require("./app/routes/orderList.routes")(app);
 require("./app/routes/article.routes")(app);
 require("./app/routes/articleBought.routes")(app);
+require("./app/routes/auth.routes")(app);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -30,41 +32,6 @@ app.use(function (err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render("error");
+  res.json({ error: err });
 });
-
-/* BEGIN db initialization */
-const Op = {};
-const dbConfig = require("./app/config/db.config.js");
-const Sequelize = require("sequelize");
-const connection = new Sequelize(
-  dbConfig.DB,
-  dbConfig.USER,
-  dbConfig.PASSWORD,
-  {
-    host: dbConfig.HOST,
-    dialect: dbConfig.dialect,
-    pool: dbConfig.pool,
-  }
-);
-/* END db initialization */
-
-const User = require("./app/models/user.model")(connection, Sequelize);
-User.sync({ force: false, alter: true });
-
-const Article = require("./app/models/article.model")(connection, Sequelize);
-Article.sync({ force: false, alter: true });
-
-const ArticleBought = require("./app/models/articleBought.model")(
-  connection,
-  Sequelize
-);
-ArticleBought.sync({ force: false, alter: true });
-
-const OrderList = require("./app/models/orderList.model")(
-  connection,
-  Sequelize
-);
-OrderList.sync({ force: false, alter: true });
-
 module.exports = app;

@@ -19,7 +19,7 @@ exports.create = (req, res) => {
     name: req.body.name,
     surname: req.body.surname,
     birth: req.body.birth,
-    mail: req.body.mail,
+    email: req.body.email,
     phone: req.body.phone,
   };
 
@@ -79,9 +79,9 @@ exports.findOne = (req, res) => {
 };
 
 exports.findByEmail = async (req, res) => {
-  const mail = req.body.mail;
+  const email = req.body.email;
 
-  var condition = mail ? { mail: mail } : null;
+  var condition = email ? { email: email } : null;
 
   var result;
   await User.findOne({ where: condition })

@@ -1,14 +1,10 @@
-/* BEGIN db initialization */
-const { Op } = require("sequelize");
+const db = require("../models");
+const Article = db.articles;
+const Op = db.Sequelize.Op;
 const { v4: uuidv4 } = require("uuid");
 const moment = require("moment");
-const Sequelize = require("../db.connection");
-const Session = require("../models/session.model")(
-  Sequelize.connection,
-  Sequelize.library
-);
-
-/* END db initialization */
+const Sequelize = db.Sequelize;
+const Session = db.sessions;
 
 // Create session for user
 exports.create = async (id) => {
