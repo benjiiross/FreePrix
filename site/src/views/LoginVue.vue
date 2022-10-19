@@ -4,8 +4,8 @@
       <form>
         <div class="innerFrame">
           <div class="field">
-            <label for="mail">Email</label>
-            <input type="text" name="mail" id="mail" v-model="mail" />
+            <label for="email">Email</label>
+            <input type="text" name="email" id="email" v-model="email" />
           </div>
           <div class="field">
             <label for="password">Password</label>
@@ -16,7 +16,7 @@
               v-model="password"
             />
           </div>
-          <button @click="login" type="button">Submit</button>
+          <button  @click="login" type="button">Submit</button>
         </div>
       </form>
     </section>
@@ -42,51 +42,45 @@
 
 <script>
 export default {
-  name: "HelloWorld",
-  props: {
-    msg: String,
-  },
   data() {
     return {
-      mail: "",
+      email: "",
       password: "",
       isLoggedIn: false,
       token: "",
     };
   },
+
   methods: {
-    login: function () {
-      var component = this;
+    login() {
       let options = {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          mail: component.mail,
-          password: component.password,
-        }),
+        body: {
+          email: this.email,
+          password: this.password,
+        },
       };
       fetch("/api/login", options)
-        .then((response) => {
-          return response.json();
-        })
+        .then((response) => response.json())
         .then((data) => {
-          component.isLoggedIn = true;
-          component.token = data.token;
+          this.isLoggedIn = true;
+          this.token = data.token;
         })
         .catch((error) => {
           console.log(error);
-          component.isLoggedIn = false;
+          this.isLoggedIn = false;
         });
     },
-    check: function () {
-      var component = this;
+
+    check() {
       let options = {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          Authorization: component.token,
+          Authorization: this.token,
         },
       };
       fetch("/api/login/check", options)
@@ -94,10 +88,11 @@ export default {
           return response.json();
         })
         .then((data) => {
-          component.isLoggedIn = data.isLoggedIn;
+          this.isLoggedIn = data.isLoggedIn;
         });
     },
-    getUsers: function () {
+
+    getUsers() {
       let options = {
         method: "GET",
         headers: {
@@ -119,7 +114,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 .login {
   form {
     width: 50%;
