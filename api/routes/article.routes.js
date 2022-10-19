@@ -7,11 +7,11 @@ module.exports = (app) => {
 
   router.get("/", articles.findArticles);
 
-  router.get("/:id", articles.findOne);
+  router.get("/:reference", articles.findOne);
 
-  router.put("/:id", articles.update);
+  router.put("/:reference", articles.update);
 
-  router.delete("/:id", articles.delete);
+  router.delete("/:reference", articles.delete);
 
   router.delete("/", articles.deleteAll);
 
