@@ -4,7 +4,7 @@
     v-bind:style="{ backgroundColor: bgColor }"
     ref="cofcard"
   >
-    <router-link to="/article?ref={{reference}}">
+    <router-link :to="`/article?ref=${reference}`">
       <img
         :src="url"
         class="rounded-5 shadow shadow-intensity-xl"

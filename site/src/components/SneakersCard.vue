@@ -1,7 +1,10 @@
 <template>
   <div class="d-flex flex-row flex-nowrap">
     <div class="position-relative w-100 m-2">
-      <img :src="url" class="w-100" />
+      <router-link :to="`/article?ref=${reference}`">
+        <img :src="url" class="w-100" />
+      </router-link>
+
       <button
         type="button"
         class="btn btn-primary rounded-5 position-absolute"
@@ -29,6 +32,7 @@ export default {
   props: {
     url: String,
     description: String,
+    reference: String,
     name: String,
     price: Number,
   },

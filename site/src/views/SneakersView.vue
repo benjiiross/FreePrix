@@ -10,6 +10,7 @@
         :description="item.description"
         :name="item.name"
         :key="item.id"
+        :reference="item.reference"
         style="width: 30%; min-width: 250px"
       />
     </div>
