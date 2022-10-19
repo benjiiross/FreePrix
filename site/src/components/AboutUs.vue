@@ -8,7 +8,7 @@
       <div class="row mt-4">
         <!--Grid column-->
         <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
-          <h5 class="text-uppercase mb-4">About company</h5>
+          <h5 class="text-center text-uppercase mb-4">About company</h5>
 
           <p>
             Our name is Freeprix, we are a company that sell occasion clothing
@@ -16,37 +16,53 @@
           </p>
 
           <p>
-            We are a young company, created in 2022and our goal is to make you
+            We are a young company, created in 2022 and our goal is to make you
             happy !
           </p>
 
           <p>You can also check our social networks below :</p>
 
-          <div class="mt-4">
+          <div class="mt-4 ml-0">
             <!-- Facebook -->
-            <a type="button" class="btn btn-floating btn-light btn-lg bg-dark"
-              ><i
+            <a
+              href="#"
+              type="button"
+              class="btn btn-floating btn-light btn-lg bg-dark m-3"
+            >
+              <i
                 class="bi bi-instagram"
-                style="font-size: 2rem; color: white"
+                style="font-size: 2rem; color: #c13584"
               ></i
             ></a>
             <!-- Dribbble -->
-            <a type="button" class="btn btn-floating btn-light btn-lg bg-dark"
+            <a
+              href="#"
+              type="button"
+              class="btn btn-floating btn-light btn-lg bg-dark m-3"
               ><i
                 class="bi bi-twitter"
-                style="font-size: 2rem; color: white"
+                style="font-size: 2rem; color: #1da1f2"
               ></i
             ></a>
             <!-- Twitter -->
-            <a type="button" class="btn btn-floating btn-light btn-lg bg-dark"
+            <a
+              href="#"
+              type="button"
+              class="btn btn-floating btn-light btn-lg bg-dark m-3"
               ><i
                 class="bi bi-snapchat"
-                style="font-size: 2rem; color: white"
+                style="font-size: 2rem; color: #fffc00"
               ></i
             ></a>
             <!-- Google + -->
-            <a type="button" class="btn btn-floating btn-light btn-lg bg-dark"
-              ><i class="bi bi-tiktok" style="font-size: 2rem; color: white"></i
+            <a
+              href="#"
+              type="button"
+              class="btn btn-floating btn-light btn-lg bg-dark m-3"
+              ><i
+                class="bi bi-tiktok"
+                style="font-size: 2rem; color: #ff0050"
+              ></i
             ></a>
             <!-- Linkedin -->
           </div>
@@ -55,7 +71,7 @@
 
         <!--Grid column-->
         <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
-          <h5 class="text-uppercase mb-4 pb-1">Contact Us</h5>
+          <h5 class="text-uppercase mb-4 pb-1 text-center">Contact Us</h5>
 
           <img
             src="../assets/img/pinglogo.png"
@@ -73,7 +89,7 @@
             </li>
             <li class="mb-3">
               <span class="fa-li"><i class="fas fa-envelope"></i></span
-              ><span class="ms-2">freeprixfr@gmail.com</span>
+              ><span class="link ms-2">freeprixfr@gmail.com</span>
             </li>
             <li class="mb-3">
               <span class="fa-li"><i class="fas fa-phone"></i></span
@@ -85,21 +101,21 @@
 
         <!--Grid column-->
         <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
-          <h5 class="text-uppercase mb-4">Stores Opening hours</h5>
+          <h5 class="text-uppercase pb-4 text-center">Stores Opening hours</h5>
 
           <table class="table text-center text-white">
             <tbody class="fw-normal">
               <tr>
                 <td>Mon - Thu:</td>
-                <td>8am - 8pm</td>
+                <td>8 AM - 8 PM</td>
               </tr>
               <tr>
                 <td>Fri - Sat:</td>
-                <td>8am - 10 pm</td>
+                <td>8 AM - 10 PM</td>
               </tr>
               <tr>
                 <td>Sunday:</td>
-                <td>9am - 8pm</td>
+                <td>9 AM - 8 PM</td>
               </tr>
             </tbody>
           </table>
@@ -108,7 +124,7 @@
             alt="Bootstrap"
             width="70"
             height="70"
-            class="rounded mx-auto d-block"
+            class="rounded mx-auto d-block mt-5"
           />
         </div>
         <!--Grid column-->
@@ -120,8 +136,22 @@
     <!-- Copyright -->
     <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
       © 2022 Copyright:
-      <a class="text-white" href="https://mdbootstrap.com/">Freeprix.com</a>
+      <a class="link" href="https://mdbootstrap.com/">Freeprix.com</a>
     </div>
     <!-- Copyright -->
   </footer>
 </template>
+
+<style scoped>
+.link {
+  color: white;
+}
+
+.link:hover {
+  color: brown;
+}
+
+.btn:hover {
+  border: 2px solid brown;
+}
+</style>
