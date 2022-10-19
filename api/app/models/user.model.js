@@ -20,7 +20,7 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.DATEONLY,
       validate: { notEmpty: true },
     },
-    mail: {
+    email: {
       type: Sequelize.STRING,
       validate: { isEmail: true },
     },

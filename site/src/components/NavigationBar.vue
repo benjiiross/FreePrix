@@ -58,6 +58,9 @@
             placeholder="Search"
           />
         </form>
+        <a href="/login" class="navbar-brand">
+          <i class="bi bi-person" style="font-size: 1.8rem"></i>
+        </a>
         <a href="/cart" class="navbar-brand">
           <i class="bi bi-basket3" style="font-size: 1.8rem"></i>
         </a>

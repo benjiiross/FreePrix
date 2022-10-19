@@ -1,19 +1,12 @@
 /* BEGIN db initialization */
-// const { Op } = require("sequelize");
-// const { v4: uuidv4 } = require("uuid");
-// const moment = require("moment");
-// const Sequelize = require("../db.connection");
-// const Session = require("../models/session.model")(
-//   Sequelize.connection,
-//   Sequelize.library
-// );
-
+const { Op } = require("sequelize");
 const { v4: uuidv4 } = require("uuid");
 const moment = require("moment");
-const db = require("../models");
-const Sequelize = db.Sequelize;
-const Op = db.Sequelize.Op;
-const Session = db.session;
+const Sequelize = require("../db.connection");
+const Session = require("../models/session.model")(
+  Sequelize.connection,
+  Sequelize.library
+);
 
 /* END db initialization */
 
