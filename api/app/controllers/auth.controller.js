@@ -25,9 +25,23 @@ exports.login = async (req, res) => {
         token = session.token;
       }
     }
-    res.send(JSON.stringify({ token: token }));
+    res.json({
+      token,
+      user: {
+        username: user.username,
+        name: user.name,
+        surname: user.surname,
+        birth: user.birth,
+        email: user.email,
+        phone: user.phone,
+      },
+    });
   } else {
-    res.status(403).send("Access denied");
+    if (!req.body.email || !user)
+      res.status(401).json({ err: "Wrong username." });
+    else if (user.password != req.body.password)
+      res.status(401).json({ err: "Wrong password." });
+    else res.status(401).json({ err: "Access denied." });
   }
 };
 
@@ -51,8 +65,4 @@ exports.isLoggedIn = async (req, res) => {
   }
   console.log("no token!");
   return false;
-};
-
-exports.getTest = async (req, res) => {
-  res.send("u done");
 };

@@ -58,9 +58,14 @@
             placeholder="Search"
           />
         </form>
-        <a href="/login" class="navbar-brand">
+
+        <a v-if="!loggedIn" href="/login" class="navbar-brand">
+          <p>Login</p>
           <i class="bi bi-person" style="font-size: 1.8rem"></i>
         </a>
+        <div v-else>
+          <p>Hello, {{ user.username }}</p>
+        </div>
         <a href="/cart" class="navbar-brand">
           <i class="bi bi-basket3" style="font-size: 1.8rem"></i>
         </a>
@@ -193,6 +198,8 @@ export default {
   data() {
     return {
       currentPopup: "",
+      loggedIn: localStorage.getItem("loggedIn"),
+      user: localStorage.getItem("client"),
     };
   },
   methods: {
