@@ -8,7 +8,7 @@
       <div class="row mt-4">
         <!--Grid column-->
         <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
-          <h5 class="text-center text-uppercase mb-4">About company</h5>
+          <h5 class="link text-center text-uppercase mb-4">About company</h5>
 
           <p>
             Our name is Freeprix, we are a company that sell occasion clothing
@@ -71,7 +71,7 @@
 
         <!--Grid column-->
         <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
-          <h5 class="text-uppercase mb-4 pb-1 text-center">Contact Us</h5>
+          <h5 class="link text-uppercase mb-4 pb-1 text-center">Contact Us</h5>
 
           <img
             src="../assets/img/pinglogo.png"
@@ -101,7 +101,9 @@
 
         <!--Grid column-->
         <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
-          <h5 class="text-uppercase pb-4 text-center">Stores Opening hours</h5>
+          <h5 class="link text-uppercase pb-4 text-center">
+            Stores Opening hours
+          </h5>
 
           <table class="table text-center text-white">
             <tbody class="fw-normal">
