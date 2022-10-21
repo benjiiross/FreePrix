@@ -10,36 +10,70 @@
         <p class="text-center">Choose a size</p>
 
         <div class="d-flex flex-row justify-content-center">
-          <a
-            class="btn m-1"
-            type="button"
-            style="width: 100px; border: 1px solid grey"
-            >S</a
-          >
-          <a
-            class="btn m-1"
-            type="button"
-            style="width: 100px; border: 1px solid grey"
-            >M</a
-          >
-          <a
-            class="btn m-1"
-            type="button"
-            style="width: 100px; border: 1px solid grey"
-            >L</a
-          >
-          <a
-            class="btn m-1"
-            type="button"
-            style="width: 100px; border: 1px solid grey"
-            >XL</a
-          >
-          <a
-            class="btn m-1"
-            type="button"
-            style="width: 100px; border: 1px solid grey"
-            >2XL</a
-          >
+          <div v-if="reference <= 180000">
+            <a
+              class="btn m-1"
+              type="button"
+              style="width: 100px; border: 1px solid grey"
+              >S</a
+            >
+            <a
+              class="btn m-1"
+              type="button"
+              style="width: 100px; border: 1px solid grey"
+              >M</a
+            >
+            <a
+              class="btn m-1"
+              type="button"
+              style="width: 100px; border: 1px solid grey"
+              >L</a
+            >
+            <a
+              class="btn m-1"
+              type="button"
+              style="width: 100px; border: 1px solid grey"
+              >XL</a
+            >
+            <a
+              class="btn m-1"
+              type="button"
+              style="width: 100px; border: 1px solid grey"
+              >2XL</a
+            >
+          </div>
+          <div v-else>
+            <a
+              class="btn m-1"
+              type="button"
+              style="width: 100px; border: 1px solid grey"
+              >38</a
+            >
+            <a
+              class="btn m-1"
+              type="button"
+              style="width: 100px; border: 1px solid grey"
+              >40</a
+            >
+            <a
+              class="btn m-1"
+              type="button"
+              style="width: 100px; border: 1px solid grey"
+              >42</a
+            >
+            <a
+              class="btn m-1"
+              type="button"
+              style="width: 100px; border: 1px solid grey"
+              >44
+            </a>
+            <a
+              class="btn m-1"
+              type="button"
+              style="width: 100px; border: 1px solid grey"
+              >46</a
+            >
+          </div>
         </div>
 
         <div class="m-4 text-center">
@@ -59,12 +93,22 @@
         and you will be happy to wear them.
       </p>
       <p>Details of the product:</p>
-      <ul>
-        <li>100% cotton</li>
-        <li>Machine washable</li>
-        <li>Country or region of origin: France</li>
-        <li>Product code : {{ reference }}</li>
-      </ul>
+      <div v-if="reference <= 180000">
+        <ul>
+          <li>100% cotton</li>
+          <li>Machine washable</li>
+          <li>Country or region of origin: France</li>
+          <li>Product code : {{ reference }}</li>
+        </ul>
+      </div>
+      <div v-else>
+        <ul>
+          <li>100% leather</li>
+          <li>Not recommended for machine washing</li>
+          <li>Country or region of origin: France</li>
+          <li>Product code : {{ reference }}</li>
+        </ul>
+      </div>
     </div>
   </div>
 </template>

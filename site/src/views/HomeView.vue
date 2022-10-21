@@ -1,11 +1,11 @@
 <template>
   <NavigationBar />
   <PutFoward2 />
-  <div class="d-flex flex-row pl-5 ml-5">
-    <h2 style="margin-left: 4%">New Arrival</h2>
+  <div class="d-flex flex-column p-3 rounded-5 m-2">
+    <h2>New Arrival</h2>
+    <HorizontalScrollComponent :articles="newArrival" />
   </div>
 
-  <HorizontalScrollComponent :articles="newArrival" />
   <PanelPhoto />
   <PutFoward1 />
 

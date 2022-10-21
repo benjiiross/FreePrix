@@ -11,8 +11,8 @@
           <h5 class="link text-center text-uppercase mb-4">About company</h5>
 
           <p>
-            Our name is Freeprix, we are a company that sell occasion clothing
-            on the internet.
+            Our name is Freeprix, we are a company that sell occasion and new
+            clothing on the internet.
           </p>
 
           <p>

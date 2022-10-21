@@ -3,25 +3,27 @@
     id="test"
     class="p-5 border border-primary position-relative border-2"
     style="
-      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS';
+      font-family: Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS';
       margin: 4rem;
     "
   >
     <div class="text-center justify-content-center">
       <h1>THE FAMOUS<span class="text-primary"> JORDAN 1</span></h1>
       <h2 class="text-primary">OBSIDIAN UNC</h2>
-      <div class="text-center p-2" style="color: grey; font-weight: bold">
+      <div class="text-center p-2" style="color: grey">
         <h5>Put a foot in the future of sneakers</h5>
       </div>
       <div class="d-flex flex-row justify-content-center p-2">
-        <button type="button" class="btn btn-secondary rounded-5 m-1 shadow-lg">
-          Order now
-          <i class="bi bi-cart rounded-5 p-1" style="color: white"></i>
-        </button>
+        <router-link :to="`/article?ref=${180002}`">
+          <a type="button" class="btn btn-secondary rounded-5 m-1">
+            Order now
+            <i class="bi bi-cart rounded-5 p-1" style="color: white"></i>
+          </a>
+        </router-link>
 
-        <button type="button" class="btn btn-primary rounded-5 m-1 shadow-lg">
+        <a type="button" class="btn btn-primary rounded-5 m-1" href="/sneakers">
           More
-        </button>
+        </a>
       </div>
     </div>
     <div class="ph d-flex flex-row mt-5" style="width: 500px; height: 500px">
