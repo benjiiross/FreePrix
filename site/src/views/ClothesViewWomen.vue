@@ -1,6 +1,5 @@
 <template>
   <NavigationBar />
-
   <h1 class="text-center m-5">Women</h1>
 
   <h2 class="text-center m-5" id="tee_shirtswomen">Tee-shirts</h2>
@@ -17,34 +16,26 @@
 
   <PanelPhoto />
   <PutFoward2 />
-  <!-- <AllLinks /> -->
-  <AboutUs />
 </template>
+
 <script>
-import AboutUs from "../components/AboutUs.vue";
-import NavigationBar from "../components/NavigationBar.vue";
 import PutFoward2 from "../components/PutFoward2.vue";
 import PanelPhoto from "../components/PanelPhoto.vue";
-// import AllLinks from "../components/AllLinks.vue";
 import HorizontalScrollComponent from "../components/HorizontalScrollComponent.vue";
+import NavigationBar from "../components/NavigationBar.vue";
 
 export default {
   components: {
-    AboutUs,
-    NavigationBar,
     PutFoward2,
     PanelPhoto,
-    // AllLinks,
     HorizontalScrollComponent,
+    NavigationBar,
   },
   data() {
     return {
       tShirtList: [],
-
       pantsList: [],
-
       capList: [],
-
       hoodieList: [],
     };
   },

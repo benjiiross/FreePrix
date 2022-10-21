@@ -1,6 +1,9 @@
 <template>
   <div class="bg-white p-5 rounded-5">
-    <div class="d-flex flex-row" style="overflow-x: scroll; width: auto">
+    <div
+      class="d-flex flex-row"
+      style="overflow-x: scroll; width: auto; border-radius: 10px"
+    >
       <ArticleCard
         v-for="item in articles"
         :name="item.name"

@@ -1,7 +1,7 @@
 <template>
-  <nav class="navbar navbar-expand-lg bg-light">
+  <nav class="navbar navbar-expand-lg bg-light position-relative">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/">
+      <button class="navbar-brand btn" @click="$router.push('/')">
         <img
           src="../assets/img/serpentlogo.png"
           alt=""
@@ -9,7 +9,7 @@
           height="24"
           class="d-inline-block align-text-top"
         />FreePrix
-      </a>
+      </button>
 
       <button
         class="navbar-toggler"
@@ -52,61 +52,50 @@
             >
           </li>
         </ul>
-        <form class="d-flex" role="search">
+        <!-- <form class="d-flex" role="search">
           <input
             class="form-control me-2 rounded-pill"
             type="search"
             placeholder="Search"
           />
-        </form>
+        </form> -->
 
-        <a v-if="!loggedIn" href="/login" class="navbar-brand">
-          <p>Login</p>
-          <i class="bi bi-person" style="font-size: 1.8rem"></i>
-        </a>
-        <div v-else>
-          <p>Hello, {{ user.username }}</p>
+        <div class="d-flex flex-row">
+          <button
+            v-if="!loggedIn"
+            @click="$router.push('/login')"
+            class="navbar-brand d-flex flex-row align-items-center btn"
+          >
+            <p class="m-0">Login</p>
+            <i class="bi bi-box-arrow-in-right" style="font-size: 1.8rem" />
+          </button>
+
+          <div
+            v-else
+            class="navbar-brand d-flex flex-row align-items-center m-0 p-0"
+          >
+            <p class="m-0 me-3">Hello, {{ user.username }}</p>
+
+            <button class="btn me-3" @click="logout">
+              <i class="bi bi-box-arrow-in-left" style="font-size: 1.8rem" />
+            </button>
+            <button class="btn me-3" @click="$router.push('/account')">
+              <i class="bi bi-person" style="font-size: 1.8rem" />
+            </button>
+          </div>
+
+          <button class="btn" @click="$router.push('/cart')">
+            <i class="bi bi-basket3" style="font-size: 1.8rem" />
+          </button>
         </div>
-        <a href="/cart" class="navbar-brand">
-          <i class="bi bi-basket3" style="font-size: 1.8rem"></i>
-        </a>
       </div>
     </div>
   </nav>
 
   <div
-    v-if="currentPopup === 'sneakers'"
-    class="d-flex position-absolute"
-    style="left: 45%"
-  >
-    <div class="card p-5 position-relative popup-width" style="left: -50%">
-      <div class="d-flex flex-column flex-sm-row gap-3 justify-content-between">
-        <div class="d-flex flex-column">
-          <h5>Trends</h5>
-          <a class="text-decoration-none text-secondary" href="#"
-            >All new arrival</a
-          >
-          <a class="text-decoration-none text-secondary" href="#"
-            >Member exclusivity</a
-          >
-        </div>
-        <div class="d-flex flex-column">
-          <h5>News for men</h5>
-          <a class="text-decoration-none text-secondary" href="#">Sneakers</a>
-          <a class="text-decoration-none text-secondary" href="#">Clothing</a>
-        </div>
-        <div class="d-flex flex-column">
-          <h5>News for women</h5>
-          <a class="text-decoration-none text-secondary" href="#">Sneakers</a>
-          <a class="text-decoration-none text-secondary" href="#">Clothing</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div
     v-if="currentPopup === 'men'"
     class="d-flex position-absolute"
-    style="left: 45%"
+    style="left: 39%"
   >
     <div class="card p-5 position-relative" style="left: -50%">
       <div class="d-flex flex-column flex-sm-row gap-3">
@@ -142,7 +131,7 @@
   <div
     v-if="currentPopup === 'women'"
     class="d-flex position-absolute"
-    style="left: 45%"
+    style="left: 43%"
   >
     <div class="card p-5 position-relative" style="left: -50%">
       <div class="d-flex flex-column flex-sm-row gap-3 justify-content-between">
@@ -196,6 +185,10 @@ export default {
       } else {
         this.currentPopup = popup;
       }
+    },
+    logout() {
+      localStorage.clear();
+      this.$router.go(0);
     },
   },
 };

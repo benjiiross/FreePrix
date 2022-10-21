@@ -17,21 +17,18 @@
   </div>
 
   <PutFoward1 />
-  <AboutUs />
 </template>
 
 <script>
-import NavigationBar from "../components/NavigationBar.vue";
-import AboutUs from "../components/AboutUs.vue";
 import PutFoward1 from "../components/PutFoward1.vue";
 import SneakersCard from "../components/SneakersCard.vue";
+import NavigationBar from "../components/NavigationBar.vue";
 
 export default {
   components: {
-    NavigationBar,
-    AboutUs,
     PutFoward1,
     SneakersCard,
+    NavigationBar,
   },
   data() {
     return {

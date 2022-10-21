@@ -1,6 +1,5 @@
 <template>
   <NavigationBar />
-
   <h1 class="text-center m-5 m-2">Men</h1>
 
   <h2 class="text-center m-5" id="tee-shirtsmen">Tee-shirts</h2>
@@ -17,19 +16,22 @@
 
   <PanelPhoto />
   <PutFoward2 />
-  <!-- <AllLinks /> -->
-  <AboutUs />
 </template>
 
 <script>
-import AboutUs from "../components/AboutUs.vue";
-import NavigationBar from "../components/NavigationBar.vue";
 import PutFoward2 from "../components/PutFoward2.vue";
 import PanelPhoto from "../components/PanelPhoto.vue";
-// import AllLinks from "../components/AllLinks.vue";
 import HorizontalScrollComponent from "../components/HorizontalScrollComponent.vue";
+import NavigationBar from "../components/NavigationBar.vue";
 
 export default {
+  components: {
+    PutFoward2,
+    PanelPhoto,
+    HorizontalScrollComponent,
+    NavigationBar,
+  },
+
   data() {
     return {
       tshirtHList: [],
@@ -61,14 +63,6 @@ export default {
       .then((response) => response.json())
       .then((response) => (this.CapHList = response))
       .catch((err) => console.error(err));
-  },
-  components: {
-    AboutUs,
-    NavigationBar,
-    PutFoward2,
-    PanelPhoto,
-    // AllLinks,
-    HorizontalScrollComponent,
   },
 };
 </script>

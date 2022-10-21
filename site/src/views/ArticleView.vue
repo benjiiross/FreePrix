@@ -10,24 +10,18 @@
   />
 
   <PutFoward1 />
-  <!-- <AllLinks /> -->
-  <AboutUs />
 </template>
 
 <script>
-import AboutUs from "../components/AboutUs.vue";
-import NavigationBar from "../components/NavigationBar.vue";
 import ArticleViewCard from "../components/ArticleViewCard.vue";
-// import AllLinks from "../components/AllLinks.vue";
 import PutFoward1 from "../components/PutFoward1.vue";
+import NavigationBar from "../components/NavigationBar.vue";
 
 export default {
   components: {
-    AboutUs,
-    NavigationBar,
     ArticleViewCard,
-    // AllLinks,
     PutFoward1,
+    NavigationBar,
   },
   props: {
     reference: String,
