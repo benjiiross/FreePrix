@@ -1,26 +1,21 @@
 <template>
   <NavigationBar />
   <PutFoward2 />
-  <div class="d-flex flex-column p-3 rounded-5 m-2">
-    <h2>New Arrival</h2>
-    <HorizontalScrollComponent :articles="newArrival" />
+  <div class="d-flex flex-row pl-5 ml-5">
+    <h2 style="margin-left: 4%">New Arrival</h2>
   </div>
 
+  <HorizontalScrollComponent :articles="newArrival" />
   <PanelPhoto />
   <PutFoward1 />
-
-  <!-- <AllLinks /> -->
-  <AboutUs />
 </template>
 
 <script>
-import AboutUs from "../components/AboutUs.vue";
-import NavigationBar from "../components/NavigationBar.vue";
 import PutFoward1 from "../components/PutFoward1.vue";
 import PutFoward2 from "../components/PutFoward2.vue";
 import PanelPhoto from "../components/PanelPhoto.vue";
-// import AllLinks from "../components/AllLinks.vue";
 import HorizontalScrollComponent from "../components/HorizontalScrollComponent.vue";
+import NavigationBar from "../components/NavigationBar.vue";
 
 export default {
   data() {
@@ -29,16 +24,14 @@ export default {
     };
   },
   components: {
-    AboutUs,
-    NavigationBar,
     PutFoward1,
     PutFoward2,
     PanelPhoto,
-    // AllLinks,
     HorizontalScrollComponent,
+    NavigationBar,
   },
   beforeMount() {
-    fetch("/api/articles?newArrival=1")
+    fetch("/api/articles?newArrival=1&reserved=false")
       .then((response) => response.json())
       .then((response) => (this.newArrival = response))
       .catch((err) => console.error(err));

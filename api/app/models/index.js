@@ -43,6 +43,6 @@ db.articleBoughts.belongsTo(db.articles, {
   as: "article",
 });
 
-// db.sequelize.sync({ alter: true });
+db.sequelize.sync({ alter: true });
 
 module.exports = db;
