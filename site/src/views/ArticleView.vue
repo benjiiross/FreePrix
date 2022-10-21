@@ -10,7 +10,7 @@
   />
 
   <PutFoward1 />
-  <AllLinks />
+  <!-- <AllLinks /> -->
   <AboutUs />
 </template>
 
@@ -18,7 +18,7 @@
 import AboutUs from "../components/AboutUs.vue";
 import NavigationBar from "../components/NavigationBar.vue";
 import ArticleViewCard from "../components/ArticleViewCard.vue";
-import AllLinks from "../components/AllLinks.vue";
+// import AllLinks from "../components/AllLinks.vue";
 import PutFoward1 from "../components/PutFoward1.vue";
 
 export default {
@@ -26,7 +26,7 @@ export default {
     AboutUs,
     NavigationBar,
     ArticleViewCard,
-    AllLinks,
+    // AllLinks,
     PutFoward1,
   },
   props: {

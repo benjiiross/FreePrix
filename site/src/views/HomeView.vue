@@ -9,7 +9,7 @@
   <PanelPhoto />
   <PutFoward1 />
 
-  <AllLinks />
+  <!-- <AllLinks /> -->
   <AboutUs />
 </template>
 
@@ -19,7 +19,7 @@ import NavigationBar from "../components/NavigationBar.vue";
 import PutFoward1 from "../components/PutFoward1.vue";
 import PutFoward2 from "../components/PutFoward2.vue";
 import PanelPhoto from "../components/PanelPhoto.vue";
-import AllLinks from "../components/AllLinks.vue";
+// import AllLinks from "../components/AllLinks.vue";
 import HorizontalScrollComponent from "../components/HorizontalScrollComponent.vue";
 
 export default {
@@ -34,7 +34,7 @@ export default {
     PutFoward1,
     PutFoward2,
     PanelPhoto,
-    AllLinks,
+    // AllLinks,
     HorizontalScrollComponent,
   },
   beforeMount() {
