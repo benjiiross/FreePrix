@@ -39,107 +39,109 @@
 </template>
 
 <script>
-import NavigationBar from '../components/NavigationBar.vue';
+import NavigationBar from "../components/NavigationBar.vue";
 export default {
-    beforeMount: () => {
-        if (localStorage.getItem("loggedIn"))
+  beforeMount: () => {
+    if (localStorage.getItem("loggedIn")) this.$router.push({ name: "home" });
+  },
+  data() {
+    return {
+      email: "",
+      password: "",
+      isLoggedIn: false,
+      token: "",
+    };
+  },
+  watch: {
+    email() {
+      if (
+        document
+          .getElementById("exampleInputEmail1")
+          .classList.contains("border-danger")
+      ) {
+        document
+          .getElementById("exampleInputEmail1")
+          .classList.remove("border-danger");
+      }
+    },
+    password() {
+      if (
+        document
+          .getElementById("exampleInputPassword1")
+          .classList.contains("border-danger")
+      ) {
+        document
+          .getElementById("exampleInputPassword1")
+          .classList.remove("border-danger");
+      }
+    },
+  },
+  methods: {
+    login() {
+      let options = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: this.email,
+          password: this.password,
+        }),
+      };
+      fetch("/api/login", options)
+        .then((response) => response.json())
+        .then((response) => {
+          if (response.err) this.errorColor(response.err);
+          else {
+            localStorage.setItem("loggedIn", response.token);
+            localStorage.setItem("client", JSON.stringify(response.user));
+            this.isLoggedIn = true;
             this.$router.push({ name: "home" });
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+          this.isLoggedIn = false;
+        });
     },
-    data() {
-        return {
-            email: "",
-            password: "",
-            isLoggedIn: false,
-            token: "",
-        };
+    check() {
+      let options = {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: this.token,
+        },
+      };
+      fetch("/api/login/check", options)
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          this.isLoggedIn = data.isLoggedIn;
+        });
     },
-    watch: {
-        email() {
-            if (document
-                .getElementById("exampleInputEmail1")
-                .classList.contains("border-danger")) {
-                document
-                    .getElementById("exampleInputEmail1")
-                    .classList.remove("border-danger");
-            }
-        },
-        password() {
-            if (document
-                .getElementById("exampleInputPassword1")
-                .classList.contains("border-danger")) {
-                document
-                    .getElementById("exampleInputPassword1")
-                    .classList.remove("border-danger");
-            }
-        },
+    errorColor(error) {
+      localStorage.setItem("loggedIn", "");
+      document.getElementById("errorText").style.color = "red";
+      document.getElementById("errorText").textContent = error;
+      if (error === "Wrong username.")
+        document
+          .getElementById("exampleInputEmail1")
+          .classList.add("border-danger");
+      if (error === "Wrong password.")
+        document
+          .getElementById("exampleInputPassword1")
+          .classList.add("border-danger");
+      else {
+        document
+          .getElementById("exampleInputEmail1")
+          .classList.add("border-danger");
+        document
+          .getElementById("exampleInputPassword1")
+          .classList.add("border-danger");
+      }
     },
-    methods: {
-        login() {
-            let options = {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    email: this.email,
-                    password: this.password,
-                }),
-            };
-            fetch("/api/login", options)
-                .then((response) => response.json())
-                .then((response) => {
-                if (response.err)
-                    this.errorColor(response.err);
-                else {
-                    localStorage.setItem("loggedIn", response.token);
-                    localStorage.setItem("client", JSON.stringify(response.user));
-                    this.isLoggedIn = true;
-                    this.$router.push({ name: "home" });
-                }
-            })
-                .catch((error) => {
-                console.log(error);
-                this.isLoggedIn = false;
-            });
-        },
-        check() {
-            let options = {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: this.token,
-                },
-            };
-            fetch("/api/login/check", options)
-                .then((response) => {
-                return response.json();
-            })
-                .then((data) => {
-                this.isLoggedIn = data.isLoggedIn;
-            });
-        },
-        errorColor(error) {
-            localStorage.setItem("loggedIn", "");
-            document.getElementById("errorText").style.color = "red";
-            document.getElementById("errorText").textContent = error;
-            if (error === "Wrong username.")
-                document
-                    .getElementById("exampleInputEmail1")
-                    .classList.add("border-danger");
-            if (error === "Wrong password.")
-                document
-                    .getElementById("exampleInputPassword1")
-                    .classList.add("border-danger");
-            else {
-                document
-                    .getElementById("exampleInputEmail1")
-                    .classList.add("border-danger");
-                document
-                    .getElementById("exampleInputPassword1")
-                    .classList.add("border-danger");
-            }
-        },
-    },
-    components: { NavigationBar }
+  },
+  components: { NavigationBar },
 };
 </script>
