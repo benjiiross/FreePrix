@@ -8,7 +8,7 @@ const Session = db.sessions;
 
 // Create session for user
 exports.create = async (id) => {
-  let validity = moment().add(25, "minutes").format();
+  let validity = moment().add(2, "hours").format();
   const obj = {
     token: uuidv4(),
     validUntil: validity,

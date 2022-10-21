@@ -10,69 +10,69 @@
         <p class="text-center">Choose a size</p>
 
         <div class="d-flex flex-row justify-content-center">
-          <div v-if="reference <= 180000">
-            <a
-              class="btn m-1"
-              type="button"
+          <div v-if="category == 'sneakers'">
+            <button
+              class="btn btn-outline-secondary m-1"
               style="width: 100px; border: 1px solid grey"
-              >S</a
             >
-            <a
-              class="btn m-1"
-              type="button"
+              38
+            </button>
+            <button
+              class="btn btn-outline-secondary m-1"
               style="width: 100px; border: 1px solid grey"
-              >M</a
             >
-            <a
-              class="btn m-1"
-              type="button"
+              40
+            </button>
+            <button
+              class="btn btn-outline-secondary m-1"
               style="width: 100px; border: 1px solid grey"
-              >L</a
             >
-            <a
-              class="btn m-1"
-              type="button"
+              42
+            </button>
+            <button
+              class="btn btn-outline-secondary m-1"
               style="width: 100px; border: 1px solid grey"
-              >XL</a
             >
-            <a
-              class="btn m-1"
-              type="button"
+              44
+            </button>
+            <button
+              class="btn btn-outline-secondary m-1"
               style="width: 100px; border: 1px solid grey"
-              >2XL</a
             >
+              46
+            </button>
           </div>
           <div v-else>
-            <a
-              class="btn m-1"
-              type="button"
+            <button
+              class="btn btn-outline-secondary m-1"
               style="width: 100px; border: 1px solid grey"
-              >38</a
             >
-            <a
-              class="btn m-1"
-              type="button"
+              S
+            </button>
+            <button
+              class="btn btn-outline-secondary m-1"
               style="width: 100px; border: 1px solid grey"
-              >40</a
             >
-            <a
-              class="btn m-1"
-              type="button"
+              M
+            </button>
+            <button
+              class="btn btn-outline-secondary m-1"
               style="width: 100px; border: 1px solid grey"
-              >42</a
             >
-            <a
-              class="btn m-1"
-              type="button"
+              L
+            </button>
+            <button
+              class="btn btn-outline-secondary m-1"
               style="width: 100px; border: 1px solid grey"
-              >44
-            </a>
-            <a
-              class="btn m-1"
-              type="button"
-              style="width: 100px; border: 1px solid grey"
-              >46</a
             >
+              XL
+            </button>
+            <button
+              class="btn btn-outline-secondary m-1"
+              style="width: 100px; border: 1px solid grey"
+            >
+              2XL
+            </button>
           </div>
         </div>
 
@@ -81,6 +81,7 @@
             type="button"
             class="btn btn-secondary rounded-5"
             style="width: 300px"
+            @click="addToCart()"
           >
             Order now
             {{ price }}$
@@ -93,18 +94,18 @@
         and you will be happy to wear them.
       </p>
       <p>Details of the product:</p>
-      <div v-if="reference <= 180000">
+      <div v-if="category == 'sneakers'">
         <ul>
-          <li>100% cotton</li>
-          <li>Machine washable</li>
+          <li>100% leather</li>
+          <li>Not recommended for machine washing</li>
           <li>Country or region of origin: France</li>
           <li>Product code : {{ reference }}</li>
         </ul>
       </div>
       <div v-else>
         <ul>
-          <li>100% leather</li>
-          <li>Not recommended for machine washing</li>
+          <li>100% cotton</li>
+          <li>Machine washable</li>
           <li>Country or region of origin: France</li>
           <li>Product code : {{ reference }}</li>
         </ul>
@@ -123,8 +124,28 @@ export default {
     reference: String,
     name: String,
     id: String,
-    price: String,
+    price: Number,
+    category: Number,
     description: String,
+  },
+  methods: {
+    addToCart() {
+      const options = {
+        method: "POST",
+        headers: {
+          Authorization: localStorage.getItem("loggedIn"),
+          "Content-Type": "application/json",
+        },
+        body: `{"referenceArticle":${this.reference}}`,
+      };
+
+      fetch("/api/articleBoughts", options)
+        .then((response) => response.json())
+        .then((response) => console.log(response))
+        .catch((err) => console.error(err));
+
+      this.$router.go(-1);
+    },
   },
 };
 </script>

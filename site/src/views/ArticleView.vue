@@ -6,6 +6,7 @@
     :description="article.description"
     :reference="reference"
     :name="article.name"
+    :category="article.category"
     :key="article.id"
   />
 

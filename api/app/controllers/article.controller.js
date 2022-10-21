@@ -13,6 +13,7 @@ exports.create = (req, res) => {
     gender: req.body.gender,
     price: req.body.price,
     newArrival: req.body.newArrival,
+    reserved: req.body.reserved,
   };
 
   Article.create(article)
@@ -34,30 +35,23 @@ exports.findArticles = (req, res) => {
   const genderReq = req.query.gender;
   const newArrivalReq = req.query.newArrival;
 
-  let condition = {};
+  let condition = { reserved: false };
 
-  // if request for every article => no filters
-
-  if (
-    !(referenceReq || categoryReq || brandReq || genderReq || newArrivalReq)
-  ) {
-    condition = null;
-  } else {
-    if (referenceReq) {
-      condition.reference = referenceReq;
-    }
-    if (categoryReq) {
-      condition.category = categoryReq;
-    }
-    if (brandReq) {
-      condition.brand = brandReq;
-    }
-    if (genderReq) {
-      condition.gender = genderReq;
-    }
-    if (newArrivalReq) {
-      condition.newArrival = newArrivalReq;
-    }
+  // if request for every article => no filterss
+  if (referenceReq) {
+    condition.reference = referenceReq;
+  }
+  if (categoryReq) {
+    condition.category = categoryReq;
+  }
+  if (brandReq) {
+    condition.brand = brandReq;
+  }
+  if (genderReq) {
+    condition.gender = genderReq;
+  }
+  if (newArrivalReq) {
+    condition.newArrival = newArrivalReq;
   }
 
   Article.findAll({ where: condition })
@@ -74,7 +68,7 @@ exports.findArticles = (req, res) => {
 exports.findOne = (req, res) => {
   const reference = req.params.reference;
 
-  Article.findOne({ where: { reference: reference } })
+  Article.findOne({ where: { reference, reserved: false } })
     .then((data) => {
       if (data) {
         res.send(data);
@@ -94,7 +88,7 @@ exports.findOne = (req, res) => {
 exports.findByCategory = (req, res) => {
   const cat = req.params.category;
 
-  Article.findAll({ where: { category: cat } })
+  Article.findAll({ where: { category: cat, reserved: false } })
     .then((data) => {
       if (data) {
         res.send(data);
@@ -114,7 +108,7 @@ exports.findByCategory = (req, res) => {
 exports.findByBrand = (req, res) => {
   const brandName = req.params.brand;
 
-  Article.findAll({ where: { brand: brandName } })
+  Article.findAll({ where: { brand: brandName, reserved: false } })
     .then((data) => {
       if (data) {
         res.send(data);
@@ -134,7 +128,7 @@ exports.findByBrand = (req, res) => {
 exports.findByGender = (req, res) => {
   const genderName = req.params.gender;
 
-  Article.findAll({ where: { gender: genderName } })
+  Article.findAll({ where: { gender: genderName, reserved: false } })
     .then((data) => {
       if (data) {
         res.send(data);
@@ -154,14 +148,10 @@ exports.findByGender = (req, res) => {
 exports.update = (req, res) => {
   const id = req.params.id;
 
-  Article.update(req.body, {
-    where: { id: id },
-  })
+  Article.update(req.body, { where: { id } })
     .then((num) => {
       if (num == 1) {
-        res.send({
-          message: "Article was updated successfully.",
-        });
+        res.send({ message: "Article was updated successfully." });
       } else {
         res.send({
           message: `Cannot update Article with id=${id}. Maybe Article was not found or req.body is empty!`,
@@ -178,14 +168,10 @@ exports.update = (req, res) => {
 exports.delete = (req, res) => {
   const id = req.params.id;
 
-  Article.destroy({
-    where: { id: id },
-  })
+  Article.destroy({ where: { id } })
     .then((num) => {
       if (num == 1) {
-        res.send({
-          message: "Article was deleted successfully!",
-        });
+        res.send({ message: "Article was deleted successfully!" });
       } else {
         res.send({
           message: `Cannot delete Article with id=${id}. Maybe Article was not found!`,

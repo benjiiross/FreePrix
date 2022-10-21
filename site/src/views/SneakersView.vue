@@ -11,6 +11,7 @@
         :name="item.name"
         :key="item.id"
         :reference="item.reference"
+        :reserved="item.reserved"
         style="width: 30%; min-width: 250px"
       />
     </div>
@@ -38,7 +39,7 @@ export default {
   beforeMount() {
     const options = { method: "GET" };
 
-    fetch("/api/articles?category=sneakers", options)
+    fetch("/api/articles?category=sneakers&reserved=false", options)
       .then((response) => response.json())
       .then((response) => (this.sneakersList = response))
       .catch((err) => console.error(err));

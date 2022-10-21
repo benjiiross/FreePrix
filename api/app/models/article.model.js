@@ -28,6 +28,10 @@ module.exports = (sequelize, Sequelize) => {
     newArrival: {
       type: Sequelize.BOOLEAN,
     },
+    reserved: {
+      type: Sequelize.BOOLEAN,
+      defaultValue: false,
+    },
   });
 
   return Article;

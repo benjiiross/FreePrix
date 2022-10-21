@@ -1,13 +1,7 @@
 module.exports = (sequelize, Sequelize) => {
   const articleBought = sequelize.define("articleBought", {
-    referenceArticle: {
-      type: Sequelize.INTEGER,
-    },
-    unityPrice: {
+    unitPrice: {
       type: Sequelize.FLOAT(10, 2),
-    },
-    quantity: {
-      type: Sequelize.INTEGER,
     },
   });
 

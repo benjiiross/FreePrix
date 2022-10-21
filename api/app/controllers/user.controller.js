@@ -5,7 +5,7 @@ const Op = db.Sequelize.Op;
 // Create and Save a new Client
 exports.create = (req, res) => {
   // Validate request
-  if (!req.body.username) {
+  if (!req.body.email) {
     res.status(400).send({
       message: "Content can not be empty!",
     });
@@ -14,7 +14,6 @@ exports.create = (req, res) => {
 
   // Create a Client
   const user = {
-    username: req.body.username,
     password: req.body.password,
     name: req.body.name,
     surname: req.body.surname,
@@ -38,13 +37,11 @@ exports.create = (req, res) => {
 
 // Retrieve all Clients from the database.
 exports.findAll = (req, res) => {
-  const username = req.query.username;
+  const email = req.query.email;
 
-  // looks for username that is like the request
+  // looks for email that is like the request
   // sql equivalent to LIKE
-  var condition = username
-    ? { username: { [Op.like]: `%${username}%` } }
-    : null;
+  var condition = email ? { email: { [Op.like]: `%${email}%` } } : null;
 
   User.findAll({ where: condition })
     .then((data) => {
@@ -97,12 +94,12 @@ exports.findByEmail = async (req, res) => {
 // Update a Client by the id in the request
 exports.update = (req, res) => {
   const id = req.params.id;
-
   User.update(req.body, {
     where: { id: id },
   })
     .then((num) => {
       if (num == 1) {
+        console.log(User.findOne(req.params, { where: { id: id } }));
         res.send({
           message: "Client was updated successfully.",
         });

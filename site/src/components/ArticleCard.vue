@@ -1,7 +1,6 @@
 <template>
   <div
     class="rounded-2 p-3 shadow-lg shadow-intensity-xl cofcard m-2"
-    v-bind:style="{ backgroundColor: bgColor }"
     ref="cofcard"
   >
     <router-link :to="`/article?ref=${reference}`">
@@ -23,11 +22,7 @@
         <button
           type="button"
           class="btn btn-primary rounded-5"
-          v-on:click="
-            {
-              bgColor = '#0092FE';
-            }
-          "
+          v-on:click="addToCart()"
         >
           <i
             class="bi bi-cart rounded-5 bg-primary p-1"
@@ -50,6 +45,23 @@ export default {
     description: String,
     exclusivity: String,
     reference: Number,
+  },
+  methods: {
+    addToCart() {
+      const options = {
+        method: "POST",
+        headers: {
+          Authorization: localStorage.getItem("loggedIn"),
+          "Content-Type": "application/json",
+        },
+        body: `{"referenceArticle":${this.reference}}`,
+      };
+
+      fetch("/api/articleBoughts", options)
+        .then((response) => response.json())
+        .then(() => this.$router.go(0))
+        .catch((err) => console.error(err));
+    },
   },
 };
 </script>

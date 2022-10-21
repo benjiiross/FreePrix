@@ -74,7 +74,7 @@
             v-else
             class="navbar-brand d-flex flex-row align-items-center m-0 p-0"
           >
-            <p class="m-0 me-3">Hello, {{ user.username }}</p>
+            <p class="m-0 me-3">Hello, {{ user.name }}</p>
 
             <button class="btn me-3" @click="logout">
               <i class="bi bi-box-arrow-in-left" style="font-size: 1.8rem" />
@@ -175,7 +175,7 @@ export default {
     return {
       currentPopup: "",
       loggedIn: localStorage.getItem("loggedIn"),
-      user: localStorage.getItem("client"),
+      user: JSON.parse(localStorage.getItem("client")),
     };
   },
   methods: {

@@ -42,6 +42,7 @@ db.articleBoughts.belongsTo(db.articles, {
   foreignKey: "articleId",
   as: "article",
 });
-db.sequelize.sync({ alter: true });
+
+// db.sequelize.sync({ alter: true });
 
 module.exports = db;

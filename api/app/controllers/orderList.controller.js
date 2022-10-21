@@ -1,5 +1,6 @@
 const {
-  orderList,
+  orderLists,
+  articles,
   articleBoughts,
   Sequelize: { Op },
 } = require("../models");
@@ -12,28 +13,42 @@ exports.create = async (req, res) => {
     return;
   }
 
-  const cartItems = articleBoughts.findAll({
+  if (!req.body.shippingAddress) {
+    res.status(400).send({ message: "shippingAddress is required" });
+    return;
+  }
+
+  const cartItems = await articleBoughts.findAll({
     where: {
-      order: null,
-      user: session.userId,
+      orderListId: null,
+      userId: session.userId,
     },
   });
-  console.log(
-    "DEBUG ~ file: orderList.controller.js ~ line 21 ~ exports.create= ~ cartItems",
-    cartItems
-  );
 
-  const orderList = {
-    orderDate: new Date(),
-    totalPrice: req.body.totalPrice,
-    billingAddress: req.body.billingAddress,
-    shipingAddress: req.body.shipingAddress,
-    gift: req.body.gift,
-  };
+  if (cartItems.length === 0) {
+    res.status(400).send({ message: "Cart is empty" });
+    return;
+  }
 
-  orderList
-    .create(orderList)
-    .then((data) => {
+  orderLists
+    .create({
+      orderDate: new Date(),
+      totalPrice: cartItems.reduce((acc, item) => acc + item.unitPrice, 0),
+      shippingAddress: req.body.shippingAddress,
+      gift: req.body.gift || false,
+      userId: session.userId,
+    })
+    .then(async (data) => {
+      await articleBoughts.update(
+        { orderListId: data.id },
+        {
+          where: {
+            orderListId: null,
+            userId: session.userId,
+          },
+        }
+      );
+
       res.send(data);
     })
     .catch((err) => {
@@ -44,12 +59,22 @@ exports.create = async (req, res) => {
     });
 };
 
-exports.findAll = (req, res) => {
-  const idOrder = req.query.idOrder;
-  var condition = idOrder ? { idOrder: { [Op.like]: `%${idOrder}%` } } : null;
+exports.findAll = async (req, res) => {
+  const session = await isLoggedIn(req, res);
+  if (!session) {
+    res.status(401).send({ message: "Unauthorized" });
+    return;
+  }
 
-  orderList
-    .findAll({ where: condition })
+  orderLists
+    .findAll({
+      where: { userId: session.userId },
+      include: {
+        model: articleBoughts,
+        as: "articleBoughts",
+        include: { model: articles, as: "article" },
+      },
+    })
     .then((data) => {
       res.send(data);
     })
@@ -61,11 +86,24 @@ exports.findAll = (req, res) => {
     });
 };
 
-exports.findOne = (req, res) => {
+exports.findOne = async (req, res) => {
+  const session = await isLoggedIn(req, res);
+  if (!session) {
+    res.status(401).send({ message: "Unauthorized" });
+    return;
+  }
+
   const id = req.params.id;
 
-  orderList
-    .findByPk(id)
+  orderLists
+    .findOne({
+      where: { id, userId: session.userId },
+      include: {
+        model: articleBoughts,
+        as: "articleBoughts",
+        include: { model: articles, as: "article" },
+      },
+    })
     .then((data) => {
       if (data) {
         res.send(data);
@@ -77,76 +115,7 @@ exports.findOne = (req, res) => {
     })
     .catch((err) => {
       res.status(500).send({
-        message: "Error retrieving Clent with id=" + id,
-      });
-    });
-};
-
-exports.update = (req, res) => {
-  const id = req.params.id;
-
-  orderList
-    .update(req.body, {
-      where: { id: id },
-    })
-    .then((num) => {
-      if (num == 1) {
-        res.send({
-          message: "orderList was updated successfully.",
-        });
-      } else {
-        res.send({
-          message: `Cannot update orderList with id=${id}. Maybe orderList was not found or req.body is empty!`,
-        });
-      }
-    })
-    .catch((err) => {
-      res.status(500).send({
-        message: "Error updating orderList with id=" + id,
-      });
-    });
-};
-
-exports.delete = (req, res) => {
-  const id = req.params.id;
-
-  orderList
-    .destroy({
-      where: { id: id },
-    })
-    .then((num) => {
-      if (num == 1) {
-        res.send({
-          message: "orderList was deleted successfully!",
-        });
-      } else {
-        res.send({
-          message: `Cannot delete orderList with id=${id}. Maybe orderList was not found!`,
-        });
-      }
-    })
-    .catch((err) => {
-      res.status(500).send({
-        message: "Could not delete orderList with id=" + id,
-      });
-    });
-};
-
-exports.deleteAll = (req, res) => {
-  orderList
-    .destroy({
-      where: {},
-      truncate: false,
-    })
-    .then((nums) => {
-      res.send({
-        message: `${nums} orderLists were deleted successfully!`,
-      });
-    })
-    .catch((err) => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while removing all orderLists.",
+        message: `Error retrieving Clent with id=${id}`,
       });
     });
 };

@@ -4,7 +4,7 @@
     class="p-5 border border-primary position-relative border-2"
     style="
       font-family: Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS';
-      margin: 4rem; z-index: -1;
+      margin: 4rem; z-index: 1;
     "
   >
     <div class="text-center justify-content-center">

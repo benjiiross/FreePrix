@@ -6,9 +6,6 @@ module.exports = (sequelize, Sequelize) => {
     totalPrice: {
       type: Sequelize.FLOAT(10, 2),
     },
-    billingAddress: {
-      type: Sequelize.STRING,
-    },
     shippingAddress: {
       type: Sequelize.STRING,
     },

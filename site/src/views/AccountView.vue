@@ -3,25 +3,19 @@
   <div class="w-100 d-flex justify-content-center p-5">
     <form class="w-25">
       <div class="mb-3">
-        <h3 class="text-center p-2">Become a Freeprix Member</h3>
-
-        <p>
-          Create a profil to have access to the cart and order all the products
-          that you want. Hope your will enjoy our site !
-        </p>
-
-        <input
-          type="text"
-          name="email"
-          class="form-control border-secondary"
-          id="exampleInputEmail1"
-          aria-describedby="emailHelp"
-          placeholder="Email address"
-          v-model="email"
-        />
-        <div id="emailHelp" class="form-text">
-          We'll never share your email with anyone else.
-        </div>
+        <h3 class="text-center p-2">Modify your informations</h3>
+        <fieldset disabled>
+          <input
+            type="text"
+            name="email"
+            class="form-control border-secondary"
+            aria-describedby="emailHelp"
+            v-model="email"
+          />
+          <div id="emailHelp" class="form-text">
+            You cannot change your email.
+          </div>
+        </fieldset>
       </div>
       <div class="mb-3">
         <input
@@ -31,7 +25,7 @@
           v-model="password"
         />
         <div id="passwordHelp" class="form-text">
-          Don't share your password with anyone else
+          Please enter your password to confirm.
         </div>
         <div class="mb-3">
           <input
@@ -55,9 +49,6 @@
             class="form-control border-secondary"
             v-model="birth"
           />
-          <div id="emailHelp" class="form-text">
-            Your Birthday must be +16 years old
-          </div>
         </div>
         <div class="mb-3">
           <input
@@ -70,10 +61,10 @@
         <div>
           <button
             type="button"
-            v-on:click="register"
+            v-on:click="update"
             class="btn btn-primary text-center"
           >
-            Register to Freeprix
+            Update informations
           </button>
           <img
             src="../assets/img/serpentlogo.png"
@@ -82,13 +73,6 @@
             height="70"
             class="text-center p-2"
           />
-          <button
-            @click="this.$router.push({ name: 'login' })"
-            class="btn"
-            style="font-size: 80%"
-          >
-            Already member ? Connect you !
-          </button>
         </div>
       </div>
     </form>
@@ -97,9 +81,11 @@
 
 <script>
 import NavigationBar from "../components/NavigationBar.vue";
+
 export default {
   data() {
     return {
+      id: Number,
       email: "",
       password: "",
       lname: "",
@@ -109,8 +95,17 @@ export default {
     };
   },
   components: { NavigationBar },
+  beforeMount() {
+    let client = JSON.parse(localStorage.getItem("client"));
+    this.email = client.email;
+    this.lname = client.surname;
+    this.fname = client.name;
+    this.birth = client.birth;
+    this.phone = client.phone;
+    this.id = client.id;
+  },
   methods: {
-    register() {
+    update() {
       let client = {
         email: this.email,
         password: this.password,
@@ -118,42 +113,44 @@ export default {
         name: this.fname,
         birth: this.birth,
         phone: this.phone,
+        id: this.id,
       };
 
-      const options = {
-        method: "POST",
+      let options = {
+        method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(client),
       };
 
-      fetch("/api/users", options)
+      console.log("tututu:");
+      //changing user in db
+      fetch("/api/users/" + this.id, options)
         .then((response) => response.json())
         .then((response) => {
-          if (response.id) {
-            let login = {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                email: response.email,
-                password: response.password,
-              }),
-            };
+          console.log(response);
+        })
+        .catch((err) => console.error(err));
 
-            fetch("/api/login", login)
-              .then((response) => response.json())
-              .then((response) => {
-                localStorage.setItem("loggedIn", response.token);
-                localStorage.setItem("client", JSON.stringify(response.user));
-                this.isLoggedIn = true;
-                this.$router.push({ name: "home" });
-              })
-              .catch((error) => {
-                console.log(error);
-                this.isLoggedIn = false;
-              });
-          }
+      console.log("local storage:");
+      //changing user in local storage
+      options = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: this.email,
+          password: this.password,
+        }),
+      };
+
+      fetch("/api/login", options)
+        .then((response) => response.json())
+        // .then((response) => console.log(response))
+        .then((response) => {
+          localStorage.setItem("loggedIn", response.token);
+          localStorage.setItem("client", JSON.stringify(response.user));
+          this.$router.push({ name: "home" });
         })
         .catch((err) => console.error(err));
     },

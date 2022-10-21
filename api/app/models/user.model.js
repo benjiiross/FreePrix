@@ -1,9 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
   const User = sequelize.define("user", {
-    username: {
-      type: Sequelize.STRING,
-      validate: { notEmpty: true },
-    },
     password: {
       type: Sequelize.STRING,
       validate: { notEmpty: true },

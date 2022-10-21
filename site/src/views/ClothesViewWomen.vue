@@ -42,22 +42,25 @@ export default {
   beforeMount() {
     const options = { method: "GET" };
 
-    fetch("/api/articles?gender=women&category=hoodie", options)
+    fetch("/api/articles?gender=women&category=hoodie&reserved=false", options)
       .then((response) => response.json())
       .then((response) => (this.hoodieList = response))
       .catch((err) => console.error(err));
 
-    fetch("/api/articles?gender=women&category=pants", options)
+    fetch("/api/articles?gender=women&category=pants&reserved=false", options)
       .then((response) => response.json())
       .then((response) => (this.pantsList = response))
       .catch((err) => console.error(err));
 
-    fetch("/api/articles?gender=women&category=cap", options)
+    fetch("/api/articles?gender=women&category=cap&reserved=false", options)
       .then((response) => response.json())
       .then((response) => (this.capList = response))
       .catch((err) => console.error(err));
 
-    fetch("/api/articles?gender=women&category=tee-shirt", options)
+    fetch(
+      "/api/articles?gender=women&category=tee-shirt&reserved=false",
+      options
+    )
       .then((response) => response.json())
       .then((response) => (this.tShirtList = response))
       .catch((err) => console.error(err));

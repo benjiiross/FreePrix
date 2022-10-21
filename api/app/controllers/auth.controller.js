@@ -28,7 +28,7 @@ exports.login = async (req, res) => {
     res.json({
       token,
       user: {
-        username: user.username,
+        id: user.id,
         name: user.name,
         surname: user.surname,
         birth: user.birth,
@@ -37,8 +37,7 @@ exports.login = async (req, res) => {
       },
     });
   } else {
-    if (!req.body.email || !user)
-      res.status(401).json({ err: "Wrong username." });
+    if (!req.body.email || !user) res.status(401).json({ err: "Wrong email." });
     else if (user.password != req.body.password)
       res.status(401).json({ err: "Wrong password." });
     else res.status(401).json({ err: "Access denied." });

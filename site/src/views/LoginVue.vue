@@ -30,8 +30,12 @@
         <button type="button" v-on:click="login" class="btn btn-primary">
           Login
         </button>
-        <button type="button" v-on:click="check" class="btn btn-primary">
-          Update
+        <button
+          type="button"
+          v-on:click="this.$router.push({ name: 'register' })"
+          class="btn btn-primary"
+        >
+          Register
         </button>
       </div>
     </form>
@@ -124,7 +128,7 @@ export default {
       localStorage.setItem("loggedIn", "");
       document.getElementById("errorText").style.color = "red";
       document.getElementById("errorText").textContent = error;
-      if (error === "Wrong username.")
+      if (error === "Wrong email.")
         document
           .getElementById("exampleInputEmail1")
           .classList.add("border-danger");
