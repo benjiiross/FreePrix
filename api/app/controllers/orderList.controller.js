@@ -1,18 +1,30 @@
-const db = require("../models");
-const orderList = db.orderLists;
-const Op = db.Sequelize.Op;
+const {
+  orderList,
+  articleBoughts,
+  Sequelize: { Op },
+} = require("../models");
+const { isLoggedIn } = require("./auth.controller");
 
-exports.create = (req, res) => {
-  if (!req.body.orderDate) {
-    res.status(400).send({
-      message: "Content can not be empty!",
-    });
+exports.create = async (req, res) => {
+  const session = await isLoggedIn(req, res);
+  if (!session) {
+    res.status(401).send({ message: "Unauthorized" });
     return;
   }
 
+  const cartItems = articleBoughts.findAll({
+    where: {
+      order: null,
+      user: session.userId,
+    },
+  });
+  console.log(
+    "DEBUG ~ file: orderList.controller.js ~ line 21 ~ exports.create= ~ cartItems",
+    cartItems
+  );
+
   const orderList = {
-    idOrder: req.body.idOrder,
-    orderDate: req.body.orderDate,
+    orderDate: new Date(),
     totalPrice: req.body.totalPrice,
     billingAddress: req.body.billingAddress,
     shipingAddress: req.body.shipingAddress,

@@ -55,14 +55,14 @@ exports.isLoggedIn = async (req, res) => {
       console.log(session.validUntil, isTokenExpired);
       if (session && !isTokenExpired) {
         console.log("all good!");
-        return true;
+        return session;
       }
       console.log("token expired!");
-      return false;
+      return null;
     }
     console.log("no session!");
-    return false;
+    return null;
   }
   console.log("no token!");
-  return false;
+  return null;
 };

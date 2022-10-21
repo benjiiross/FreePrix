@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex flex-row flex-nowrap" style="z-index: -1">
+  <div class="d-flex flex-row flex-nowrap">
     <div class="position-relative w-100 m-2">
       <router-link :to="`/article?ref=${reference}`">
         <img :src="url" class="w-100" />

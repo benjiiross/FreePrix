@@ -97,7 +97,7 @@
     class="d-flex position-absolute"
     style="left: 39%"
   >
-    <div class="card p-5 position-relative" style="left: -50%">
+    <div class="card p-5 position-relative" style="left: -50%; z-index: 10">
       <div class="d-flex flex-column flex-sm-row gap-3">
         <div class="d-flex flex-column">
           <h5>Clothing</h5>
@@ -133,7 +133,7 @@
     class="d-flex position-absolute"
     style="left: 43%"
   >
-    <div class="card p-5 position-relative" style="left: -50%">
+    <div class="card p-5 position-relative" style="left: -50%; z-index: 10">
       <div class="d-flex flex-column flex-sm-row gap-3 justify-content-between">
         <div class="d-flex flex-column">
           <h5>Clothing</h5>

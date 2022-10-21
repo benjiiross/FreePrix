@@ -144,7 +144,7 @@
   </footer>
 </template>
 
-<style scoped>
+<style>
 .link {
   color: white;
 }

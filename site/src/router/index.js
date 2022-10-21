@@ -33,7 +33,6 @@ const router = createRouter({
       path: "/login",
       name: "login",
       component: () => import("../views/LoginVue.vue"),
-      props: true,
     },
 
     {
@@ -41,7 +40,18 @@ const router = createRouter({
       name: "cart",
       component: () => import("../views/CartView.vue"),
     },
+
+    {
+      path: "/register",
+      name: "register",
+      component: () => import("../views/RegisterView.vue"),
+    },
   ],
+});
+
+router.beforeEach(async (to) => {
+  // const public = ['/', "/clothesmen"]
+  // if (!)
 });
 
 export default router;
