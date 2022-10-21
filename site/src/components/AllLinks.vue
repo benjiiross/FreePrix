@@ -26,10 +26,6 @@
     </div>
     <div>
       <h2>Clothing</h2>
-      <a class="text-decoration-none text-secondary" href="/allclothes"
-        >All the clothes</a
-      >
-      <br />
       <a class="text-decoration-none text-secondary" href="#">Tee-shirts</a>
       <br />
       <a class="text-decoration-none text-secondary" href="#">Pants</a>

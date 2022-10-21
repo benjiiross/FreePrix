@@ -3,16 +3,16 @@
 
   <h1 class="text-center m-5">Women</h1>
 
-  <h2 class="text-center m-5">Tee-shirts</h2>
+  <h2 class="text-center m-5" id="tee_shirtswomen">Tee-shirts</h2>
   <HorizontalScrollComponent :articles="tShirtList" />
 
-  <h2 class="text-center m-5">Hoodies</h2>
+  <h2 class="text-center m-5" id="hoodieswomen">Hoodies</h2>
   <HorizontalScrollComponent :articles="hoodieList" />
 
-  <h2 class="text-center m-5">Pants</h2>
+  <h2 class="text-center m-5" id="pantswomen">Pants</h2>
   <HorizontalScrollComponent :articles="pantsList" />
 
-  <h2 class="text-center m-5">Caps</h2>
+  <h2 class="text-center m-5" id="capswomen">Caps</h2>
   <HorizontalScrollComponent :articles="capList" />
 
   <PanelPhoto />

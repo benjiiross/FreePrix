@@ -26,14 +26,6 @@
         <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
           <li class="nav-item">
             <a
-              class="nav-link"
-              :class="{ 'active underline': currentPopup === 'new' }"
-              @click="togglePopup('new')"
-              >New</a
-            >
-          </li>
-          <li class="nav-item">
-            <a
               href="#"
               class="nav-link"
               :class="{ 'active underline': currentPopup === 'men' }"
@@ -48,6 +40,15 @@
               :class="{ 'active underline': currentPopup === 'women' }"
               @click="togglePopup('women')"
               >Women</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              href="/sneakers"
+              class="nav-link"
+              :class="{ 'active underline': currentPopup === 'new' }"
+              @click="togglePopup('new')"
+              >Sneakers</a
             >
           </li>
         </ul>
@@ -74,9 +75,9 @@
   </nav>
 
   <div
-    v-if="currentPopup === 'new'"
+    v-if="currentPopup === 'sneakers'"
     class="d-flex position-absolute"
-    style="left: 50%"
+    style="left: 45%"
   >
     <div class="card p-5 position-relative popup-width" style="left: -50%">
       <div class="d-flex flex-column flex-sm-row gap-3 justify-content-between">
@@ -105,43 +106,35 @@
   <div
     v-if="currentPopup === 'men'"
     class="d-flex position-absolute"
-    style="left: 50%"
+    style="left: 45%"
   >
-    <div class="card p-5 position-relative popup-width" style="left: -50%">
-      <div class="d-flex flex-column flex-sm-row gap-3 justify-content-between">
-        <div class="d-flex flex-column">
-          <h5>Trends</h5>
-          <a class="text-decoration-none text-secondary" href="#"
-            >New arrival</a
-          >
-          <a class="text-decoration-none text-secondary" href="#"
-            >Best seller</a
-          >
-          <a class="text-decoration-none text-secondary" href="#"
-            >Member exclusivity</a
-          >
-        </div>
-        <div class="d-flex flex-column">
-          <h5>Sneakers</h5>
-          <a class="text-decoration-none text-secondary" href="/sneakers"
-            >All sneakers</a
-          >
-          <a class="text-decoration-none text-secondary" href="#">Jordan</a>
-          <a class="text-decoration-none text-secondary" href="#"
-            >New Balance</a
-          >
-          <a class="text-decoration-none text-secondary" href="#">Vans</a>
-          <a class="text-decoration-none text-secondary" href="#">Nike</a>
-        </div>
+    <div class="card p-5 position-relative" style="left: -50%">
+      <div class="d-flex flex-column flex-sm-row gap-3">
         <div class="d-flex flex-column">
           <h5>Clothing</h5>
           <a class="text-decoration-none text-secondary" href="clothesmen"
             >All the clothes</a
           >
-          <a class="text-decoration-none text-secondary" href="#">Tee-shirts</a>
-          <a class="text-decoration-none text-secondary" href="#">Pants</a>
-          <a class="text-decoration-none text-secondary" href="#">Hoodies</a>
-          <a class="text-decoration-none text-secondary" href="#">Caps</a>
+          <a
+            class="text-decoration-none text-secondary"
+            href="clothesmen#tee-shirtsmen"
+            >Tee-shirts</a
+          >
+          <a
+            class="text-decoration-none text-secondary"
+            href="clothesmen#pantsmen"
+            >Pants</a
+          >
+          <a
+            class="text-decoration-none text-secondary"
+            href="clothesmen#hoodiesmen"
+            >Hoodies</a
+          >
+          <a
+            class="text-decoration-none text-secondary"
+            href="clothesmen#capsmen"
+            >Caps</a
+          >
         </div>
       </div>
     </div>
@@ -149,43 +142,37 @@
   <div
     v-if="currentPopup === 'women'"
     class="d-flex position-absolute"
-    style="left: 50%"
+    style="left: 45%"
   >
-    <div class="card p-5 position-relative popup-width" style="left: -50%">
+    <div class="card p-5 position-relative" style="left: -50%">
       <div class="d-flex flex-column flex-sm-row gap-3 justify-content-between">
         <div class="d-flex flex-column">
-          <h5>Trends</h5>
-          <a class="text-decoration-none text-secondary" href="#"
-            >New arrival</a
-          >
-          <a class="text-decoration-none text-secondary" href="#"
-            >Best seller</a
-          >
-          <a class="text-decoration-none text-secondary" href="#"
-            >Member exclusivity</a
-          >
-        </div>
-        <div class="d-flex flex-column">
-          <h5>Sneakers</h5>
-          <a class="text-decoration-none text-secondary" href="/sneakers"
-            >All sneakers</a
-          >
-          <a class="text-decoration-none text-secondary" href="#">Jordan</a>
-          <a class="text-decoration-none text-secondary" href="#"
-            >New Balance</a
-          >
-          <a class="text-decoration-none text-secondary" href="#">Vans</a>
-          <a class="text-decoration-none text-secondary" href="#">Nike</a>
-        </div>
-        <div class="d-flex flex-column">
           <h5>Clothing</h5>
-          <a class="text-decoration-none text-secondary" href="/clotheswomen"
+          <a
+            class="text-decoration-none text-secondary hover"
+            href="/clotheswomen"
             >All the clothes</a
           >
-          <a class="text-decoration-none text-secondary" href="#">Tee-shirts</a>
-          <a class="text-decoration-none text-secondary" href="#">Pants</a>
-          <a class="text-decoration-none text-secondary" href="#">Hoodies</a>
-          <a class="text-decoration-none text-secondary" href="#">Caps</a>
+          <a
+            class="text-decoration-none text-secondary"
+            href="clotheswomen#tee-shirtswomen"
+            >Tee-shirts</a
+          >
+          <a
+            class="text-decoration-none text-secondary"
+            href="clotheswomen#pantswomen"
+            >Pants</a
+          >
+          <a
+            class="text-decoration-none text-secondary"
+            href="clotheswomen#hoodieswomen"
+            >Hoodies</a
+          >
+          <a
+            class="text-decoration-none text-secondary"
+            href="clotheswomen#capswomen"
+            >Caps</a
+          >
         </div>
       </div>
     </div>
@@ -227,5 +214,8 @@ export default {
 
 .nav-link {
   cursor: pointer;
+}
+.hover {
+  color: black;
 }
 </style>
