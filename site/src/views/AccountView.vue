@@ -20,6 +20,7 @@
       <div class="mb-3">
         <input
           type="password"
+          id="password"
           class="form-control border-secondary"
           placeholder="Password"
           v-model="password"
@@ -81,6 +82,7 @@
 
 <script>
 import NavigationBar from "../components/NavigationBar.vue";
+import router from "../router";
 
 export default {
   data() {
@@ -105,54 +107,35 @@ export default {
     this.id = client.id;
   },
   methods: {
-    update() {
-      let client = {
-        email: this.email,
-        password: this.password,
-        surname: this.lname,
-        name: this.fname,
-        birth: this.birth,
-        phone: this.phone,
-        id: this.id,
-      };
-
-      let options = {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(client),
-      };
-
-      console.log("tututu:");
-      //changing user in db
-      fetch("/api/users/" + this.id, options)
-        .then((response) => response.json())
-        .then((response) => {
-          console.log(response);
-        })
-        .catch((err) => console.error(err));
-
-      console.log("local storage:");
-      //changing user in local storage
-      options = {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
+    async update() {
+      if (!this.password) {
+        document.getElementById("password").classList.add("border-danger");
+      } else {
+        let client = {
           email: this.email,
           password: this.password,
-        }),
-      };
+          surname: this.lname,
+          name: this.fname,
+          birth: this.birth,
+          phone: this.phone,
+          id: this.id,
+        };
 
-      fetch("/api/login", options)
-        .then((response) => response.json())
-        // .then((response) => console.log(response))
-        .then((response) => {
-          localStorage.setItem("loggedIn", response.token);
-          localStorage.setItem("client", JSON.stringify(response.user));
-          this.$router.push({ name: "home" });
-        })
-        .catch((err) => console.error(err));
+        let options = {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(client),
+        };
+
+        console.log("tututu:");
+        //changing user in db
+        await fetch("/api/users/" + this.id, options)
+          .then((response) => response.json())
+          .catch((err) => console.error(err));
+
+        localStorage.clear();
+        this.$router.push({ name: "login" });
+      }
     },
   },
 };

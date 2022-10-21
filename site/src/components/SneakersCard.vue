@@ -4,7 +4,7 @@
       <router-link :to="`/article?ref=${reference}`">
         <img :src="url" class="w-100" />
       </router-link>
-      <div v-if="!reserved">
+      <div v-if="!reserved && !ordered">
         <button
           @click="addToCart()"
           type="button"
@@ -22,7 +22,7 @@
         </button>
       </div>
       <div
-        v-else
+        v-else-if="reserved && !ordered"
         class="d-flex flex-column justify-content-between text-center m-2 align-items-stretch"
       >
         <h3>{{ price }}$</h3>
@@ -31,6 +31,14 @@
         <button @click="removeItem" class="btn btn-danger flex-shrink-1">
           remove item
         </button>
+      </div>
+      <div
+        v-else
+        class="d-flex flex-column justify-content-between text-center m-2 align-items-stretch"
+      >
+        <h3>{{ price }}$</h3>
+        <h5>{{ name }}</h5>
+        <p class="me-auto">{{ description }}</p>
       </div>
     </div>
   </div>
@@ -46,6 +54,7 @@ export default {
     price: Number,
     reserved: Boolean,
     id: Number,
+    ordered: Boolean,
   },
   methods: {
     removeItem() {
@@ -65,21 +74,24 @@ export default {
       this.$router.go(0);
     },
     addToCart() {
-      const options = {
-        method: "POST",
-        headers: {
-          Authorization: localStorage.getItem("loggedIn"),
-          "Content-Type": "application/json",
-        },
-        body: `{"referenceArticle":${this.reference}}`,
-      };
+      if (!localStorage.getItem("loggedIn")) {
+        this.$router.push({ name: "login" });
+      } else {
+        const options = {
+          method: "POST",
+          headers: {
+            Authorization: localStorage.getItem("loggedIn"),
+            "Content-Type": "application/json",
+          },
+          body: `{"referenceArticle":${this.reference}}`,
+        };
 
-      fetch("/api/articleBoughts", options)
-        .then((response) => response.json())
-        .then((response) => console.log(response))
-        .catch((err) => console.error(err));
+        fetch("/api/articleBoughts", options)
+          .then((response) => response.json())
+          .catch((err) => console.error(err));
 
-      this.$router.go(0);
+        this.$router.go(0);
+      }
     },
   },
 };

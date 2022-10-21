@@ -125,26 +125,29 @@ export default {
     name: String,
     id: String,
     price: Number,
-    category: Number,
+    category: String,
     description: String,
   },
   methods: {
     addToCart() {
-      const options = {
-        method: "POST",
-        headers: {
-          Authorization: localStorage.getItem("loggedIn"),
-          "Content-Type": "application/json",
-        },
-        body: `{"referenceArticle":${this.reference}}`,
-      };
+      if (!localStorage.getItem("loggedIn")) {
+        this.$router.push({ name: "login" });
+      } else {
+        const options = {
+          method: "POST",
+          headers: {
+            Authorization: localStorage.getItem("loggedIn"),
+            "Content-Type": "application/json",
+          },
+          body: `{"referenceArticle":${this.reference}}`,
+        };
 
-      fetch("/api/articleBoughts", options)
-        .then((response) => response.json())
-        .then((response) => console.log(response))
-        .catch((err) => console.error(err));
+        fetch("/api/articleBoughts", options)
+          .then((response) => response.json())
+          .catch((err) => console.error(err));
 
-      this.$router.go(-1);
+        this.$router.go(-1);
+      }
     },
   },
 };

@@ -14,28 +14,37 @@
           type="text"
           name="email"
           class="form-control border-secondary"
+          :class="{ 'border border-danger': !emailValid }"
           id="exampleInputEmail1"
           aria-describedby="emailHelp"
           placeholder="Email address"
           v-model="email"
         />
-        <div id="emailHelp" class="form-text">
+        <div v-if="emailValid" id="emailHelp" class="form-text">
           We'll never share your email with anyone else.
+        </div>
+        <div v-else id="emailHelp" class="form-text text-danger">
+          Please enter a valid email.
         </div>
       </div>
       <div class="mb-3">
         <input
           type="password"
           class="form-control border-secondary"
+          :class="{ 'border border-danger': !password }"
           placeholder="Password"
           v-model="password"
         />
-        <div id="passwordHelp" class="form-text">
+        <div v-if="password" id="passwordHelp" class="form-text">
           Don't share your password with anyone else
+        </div>
+        <div v-else id="passwordHelp" class="form-text text-danger">
+          Please enter a password.
         </div>
         <div class="mb-3">
           <input
             type="text"
+            :class="{ 'border border-danger': !fname }"
             class="form-control border-secondary"
             placeholder="First Name"
             v-model="fname"
@@ -46,6 +55,7 @@
             type="text"
             class="form-control border-secondary"
             placeholder="Last Name"
+            :class="{ 'border border-danger': !lname }"
             v-model="lname"
           />
         </div>
@@ -53,17 +63,16 @@
           <input
             type="date"
             class="form-control border-secondary"
+            :class="{ 'border border-danger': !birth }"
             v-model="birth"
           />
-          <div id="emailHelp" class="form-text">
-            Your Birthday must be +16 years old
-          </div>
         </div>
         <div class="mb-3">
           <input
             type="text"
             class="form-control border-secondary"
             placeholder="phoneNumber"
+            :class="{ 'border border-danger': !phone }"
             v-model="phone"
           />
         </div>
@@ -101,6 +110,7 @@ export default {
   data() {
     return {
       email: "",
+      emailValid: true,
       password: "",
       lname: "",
       fname: "",
@@ -110,52 +120,64 @@ export default {
   },
   components: { NavigationBar },
   methods: {
+    validateEmail() {
+      return this.email
+        .toLowerCase()
+        .match(
+          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        );
+    },
     register() {
-      let client = {
-        email: this.email,
-        password: this.password,
-        surname: this.lname,
-        name: this.fname,
-        birth: this.birth,
-        phone: this.phone,
-      };
+      if (!this.validateEmail()) {
+        this.emailValid = false;
+      } else {
+        this.emailValid = true;
+        let client = {
+          email: this.email,
+          password: this.password,
+          surname: this.lname,
+          name: this.fname,
+          birth: this.birth,
+          phone: this.phone,
+        };
 
-      const options = {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(client),
-      };
+        const options = {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(client),
+        };
 
-      fetch("/api/users", options)
-        .then((response) => response.json())
-        .then((response) => {
-          if (response.id) {
-            let login = {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                email: response.email,
-                password: response.password,
-              }),
-            };
+        fetch("/api/users", options)
+          .then((response) => response.json())
+          .then((response) => {
+            if (response.id) {
+              let login = {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  email: response.email,
+                  password: response.password,
+                }),
+              };
 
-            fetch("/api/login", login)
-              .then((response) => response.json())
-              .then((response) => {
-                localStorage.setItem("loggedIn", response.token);
-                localStorage.setItem("client", JSON.stringify(response.user));
-                this.isLoggedIn = true;
-                this.$router.push({ name: "home" });
-              })
-              .catch((error) => {
-                console.log(error);
-                this.isLoggedIn = false;
-              });
-          }
-        })
-        .catch((err) => console.error(err));
+              fetch("/api/login", login)
+                .then((response) => response.json())
+                .then((response) => {
+                  localStorage.setItem("loggedIn", response.token);
+                  localStorage.setItem("client", JSON.stringify(response.user));
+                  this.isLoggedIn = true;
+                  this.$router.push({ name: "home" });
+                })
+                .catch((error) => {
+                  console.error(error);
+                  this.isLoggedIn = false;
+                });
+            }
+          })
+          .catch((err) => console.error(err));
+      }
     },
   },
 };

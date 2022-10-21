@@ -1,6 +1,7 @@
 <template>
   <NavigationBar />
   <ArticleViewCard
+    v-if="articleFound"
     :image0="article.url"
     :price="article.price"
     :description="article.description"
@@ -9,6 +10,9 @@
     :category="article.category"
     :key="article.id"
   />
+  <div v-else>
+    <h1 class="text-center">Article not found.</h1>
+  </div>
 
   <PutFoward1 />
 </template>
@@ -30,6 +34,7 @@ export default {
   data() {
     return {
       article: {},
+      articleFound: false,
     };
   },
   beforeMount() {
@@ -37,7 +42,12 @@ export default {
 
     fetch(`/api/articles/${this.reference}`, options)
       .then((response) => response.json())
-      .then((response) => (this.article = response))
+      .then((response) => {
+        if (response.id) {
+          this.article = response;
+          this.articleFound = true;
+        }
+      })
       .catch((err) => console.error(err));
   },
 };

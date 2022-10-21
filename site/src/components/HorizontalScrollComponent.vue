@@ -15,6 +15,7 @@
           :price="item.article.price"
           :reserved="item.article.reserved"
           :id="item.id"
+          :ordered="ordered"
           style="width: 30%; min-width: 250px"
         />
       </div>
@@ -48,6 +49,7 @@ export default {
   props: {
     articles: Array,
     cart: Boolean,
+    ordered: Boolean,
   },
 };
 </script>

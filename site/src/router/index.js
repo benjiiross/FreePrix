@@ -56,8 +56,18 @@ const router = createRouter({
 });
 
 router.beforeEach(async (to) => {
-  // const public = ['/', "/clothesmen"]
-  // if (!)
+  const publicPages = [
+    "/",
+    "/clothesmen",
+    "/clotheswomen",
+    "/article",
+    "/sneakers",
+    "/login",
+    "/register",
+  ];
+  const authRequired = !publicPages.includes(to.path);
+
+  if (authRequired && !localStorage.getItem("loggedIn")) return "/login";
 });
 
 export default router;
